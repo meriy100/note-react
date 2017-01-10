@@ -23,11 +23,13 @@ export const toggleTodo = (id) => {
   }
 }
 
+let nextPostId = 1
 
-export const clickActionAddPost = createAction('ADD_POST')
-// expect(clickActionAddPost()).to.deep.equal({
-//   type: 'ADD_POST',
-//   payload: {id: 2, body: "abc2"}
-// });
+function newPost() {
+  nextPostId++
+  return {id: nextPostId, body: `abc${nextPostId}`}
+}
+
+export const clickActionAddPost = createAction('ADD_POST', newPost)
 
 export const clickActionQueryPosts = createAction('QUERY_POSTS')

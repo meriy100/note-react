@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import Post from './Post'
 
 const Posts = ({ posts, clickQueryPosts, clickAddPost }) => (
   <div>
@@ -7,16 +8,17 @@ const Posts = ({ posts, clickQueryPosts, clickAddPost }) => (
     <button onClick={ clickAddPost }>Add</button>
     <ul>
       {posts.map(post =>
-        <li key={post.id} >
-          {post.body}
-        </li>
+        <Post key={post.id} {...post} />
       )}
     </ul>
   </div>
 )
 
 Posts.propTypes = {
-  posts: PropTypes.array,
+  posts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    body: PropTypes.string.isRequired
+  }).isRequired).isRequired,
   clickQueryPosts: PropTypes.func.isRequired,
   clickAddPost: PropTypes.func.isRequired,
 }

@@ -6,7 +6,7 @@ const posts = handleActions(
       return [{id: 1, body: "abc"}]
     },
     ADD_POST: (state, action) => {
-      return state.push({id: action.payload.id, body: action.payload.body})
+      return state.concat({id: action.payload.id, body: action.payload.body})
     }
   }, []
 )
