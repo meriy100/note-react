@@ -1,18 +1,14 @@
 import { handleActions } from "redux-actions"
 
-const posts = handleActions({
-  CIRCLE: (state, action) => {
-    return 'decide'
-  },
-  TRIANGLE: (state, action) => {
-    return state + 't'
-  },
-  SQUARE: (state, action) => {
-    return state + 's'
-  },
-  CROSS: (state, action) => {
-    return state.substr(0, state.length - 1)
-  }
-}, 'default')
+const posts = handleActions(
+  {
+    QUERY_POSTS: (state, action) => {
+      return [{id: 1, body: "abc"}]
+    },
+    ADD_POST: (state, action) => {
+      return state.push({id: action.payload.id, body: action.payload.body})
+    }
+  }, []
+)
 
 export default posts

@@ -24,7 +24,10 @@ export const toggleTodo = (id) => {
 }
 
 
-export const clickActionCI = createAction('CIRCLE')
-export const clickActionT = createAction('TRIANGLE')
-export const clickActionS = createAction('SQUARE')
-export const clickActionCR = createAction('CROSS')
+export const clickActionAddPost = createAction('ADD_POST')
+// expect(clickActionAddPost()).to.deep.equal({
+//   type: 'ADD_POST',
+//   payload: {id: 2, body: "abc2"}
+// });
+
+export const clickActionQueryPosts = createAction('QUERY_POSTS')

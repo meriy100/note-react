@@ -1,19 +1,17 @@
 import { connect } from 'react-redux'
-import { clickActionCI, clickActionT, clickActionS, clickActionCR } from '../actions'
+import { clickActionQueryPosts, clickActionAddPost } from '../actions'
 import Posts from '../components/Posts'
 
 const mapStateToProps = (state) => {
   return {
-    str: state
+    posts: state
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    clickTriangle: () => dispatch(clickActionT()),
-    clickSquare: () => dispatch(clickActionS()),
-    clickCircle: () => dispatch(clickActionCI()),
-    clickCross: () => dispatch(clickActionCR())
+    clickQueryPosts: () => dispatch(clickActionQueryPosts()),
+    clickAddPost: () => dispatch(clickActionAddPost())
   }
 }
 

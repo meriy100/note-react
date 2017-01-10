@@ -8,7 +8,9 @@ import createLogger from 'redux-logger';
 import posts from './reducers/posts'
 import Ps from './containers/Ps'
 
-let store = createStore(posts, applyMiddleware(createLogger()))
+let store = createStore(posts,
+  applyMiddleware(createLogger())
+)
 
 render(
   <Provider store={store}>
