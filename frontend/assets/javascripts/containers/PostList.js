@@ -15,9 +15,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const Ps = connect(
+const PostList = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Posts)
 
-export default Ps
+export default PostList

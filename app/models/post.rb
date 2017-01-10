@@ -14,4 +14,11 @@
 #
 
 class Post < ApplicationRecord
+  def self.tree
+    root_tree = TreePost.new
+    each do |post|
+      root_tree.insert_post post.path.split('/'), post
+    end
+    root_tree
+  end
 end

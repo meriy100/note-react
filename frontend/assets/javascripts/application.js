@@ -10,7 +10,7 @@ import createLogger from 'redux-logger';
 import promiseMiddleware from 'redux-promise'
 
 import posts from './reducers/posts'
-import Ps from './containers/Ps'
+import PostList from './containers/PostList'
 
 let store = createStore(posts,
   applyMiddleware(createLogger(), promiseMiddleware)
@@ -19,7 +19,7 @@ let store = createStore(posts,
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Ps}></Route>
+      <Route path="/" component={PostList}></Route>
     </Router>
   </Provider>,
   document.getElementById('root')

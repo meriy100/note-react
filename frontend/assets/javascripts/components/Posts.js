@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import Post from './Post'
+import PostListItem from './PostListItem'
 
 const Posts = ({ posts, clickQueryPosts, clickAddPost }) => (
   <div>
@@ -8,7 +8,7 @@ const Posts = ({ posts, clickQueryPosts, clickAddPost }) => (
     <button onClick={ clickAddPost }>Add</button>
     <ul>
       {posts.map(post =>
-        <Post key={post.id} {...post} />
+        <PostListItem key={post.id} {...post} />
       )}
     </ul>
   </div>

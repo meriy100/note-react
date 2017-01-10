@@ -24,7 +24,7 @@ export const toggleTodo = (id) => {
   }
 }
 
-let nextPostId = 1
+let nextPostId = 100
 
 function queryPosts() {
   return axios.get(`/api/posts`).then((response) => {

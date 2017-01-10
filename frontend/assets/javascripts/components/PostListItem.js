@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react'
 
-const Post = ({ body }) => (
+const PostListItem = ({ body }) => (
   <li>
     {body}
   </li>
 )
 
-Post.propTypes = {
+PostListItem.propTypes = {
   body: PropTypes.string.isRequired
 }
 
-export default Post
+export default PostListItem
 
