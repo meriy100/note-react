@@ -21,3 +21,7 @@ export const toggleTodo = (id) => {
   }
 }
 
+export const getPosts = (params) => {
+  type: 'GET_POSTS',
+  params
+}
