@@ -1,3 +1,5 @@
+import { createAction } from "redux-actions";
+
 let nextTodoId = 0
 export const addTodo = (text) => {
   return {
@@ -21,7 +23,8 @@ export const toggleTodo = (id) => {
   }
 }
 
-export const getPosts = (params) => {
-  type: 'GET_POSTS',
-  params
-}
+
+export const clickActionCI = createAction('CIRCLE')
+export const clickActionT = createAction('TRIANGLE')
+export const clickActionS = createAction('SQUARE')
+export const clickActionCR = createAction('CROSS')

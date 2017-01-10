@@ -1,29 +1,18 @@
-const post = (state = {}, action) => {
-  switch (action.type) {
-    case 'ADD_POST':
-      return {
-        id: action.id,
-        text: action.text,
-      }
-    default:
-      return state
-  }
-}
+import { handleActions } from "redux-actions"
 
-const posts = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_POST':
-      return [
-        ...state,
-        post(undefined, action)
-      ]
-    case 'GET_POSTS':
-      return state.map(p =>
-        post(p, action)
-      )
-    default:
-      return state
+const posts = handleActions({
+  CIRCLE: (state, action) => {
+    return 'decide'
+  },
+  TRIANGLE: (state, action) => {
+    return state + 't'
+  },
+  SQUARE: (state, action) => {
+    return state + 's'
+  },
+  CROSS: (state, action) => {
+    return state.substr(0, state.length - 1)
   }
-}
+}, 'default')
 
 export default posts
