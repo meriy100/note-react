@@ -11,6 +11,7 @@ import promiseMiddleware from 'redux-promise'
 
 import posts from './reducers/posts'
 import PostList from './containers/PostList'
+import RootComponent from "./components/RootComponent"
 
 let store = createStore(posts,
   applyMiddleware(createLogger(), promiseMiddleware)
@@ -19,7 +20,8 @@ let store = createStore(posts,
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={PostList}></Route>
+      <Route path="/posts" component={PostList}></Route>
+      <Route path="/" component={RootComponent}></Route>
     </Router>
   </Provider>,
   document.getElementById('root')
