@@ -1,0 +1,36 @@
+@import 'settings/variables/color';
+
+.editer {
+  height: 100%;
+
+  form {
+    height: 100%;
+
+  }
+
+  .form-group {
+    height: 100%;
+
+    .form-header {
+      height: 15%;
+      margin-bottom: 15px;
+    }
+
+    .body-area {
+      height: 70%;
+      margin-bottom: 10px;
+      resize: none;
+    }
+  }
+
+  .form-bottom {
+    height: 10%;
+
+    .btn-group {
+      float: right;
+      margin-left: auto;
+    }
+  }
+}
+
+

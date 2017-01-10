@@ -1,0 +1,45 @@
+@import 'settings/variables/color';
+
+.is-inline-blocks {
+  font-size: 0;
+}
+
+.is-display-block {
+  display: block;
+}
+
+.is-display-none {
+  display: none;
+}
+
+.is-align-center {
+  text-align: center;
+}
+
+.is-float-left {
+  float: left;
+}
+
+.is-left {
+  left: 0;
+}
+
+.is-right {
+  float: right;
+}
+
+a {
+
+  .click-show {
+    color: $black;
+  }
+
+  .click-edit {
+    color: $base-color;
+  }
+
+  .click-destroy {
+    color: $black;
+  }
+}
+

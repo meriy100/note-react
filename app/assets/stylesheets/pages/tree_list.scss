@@ -1,0 +1,33 @@
+@import 'settings/variables/color';
+
+.tree-list {
+  background-color: $black;
+  padding: 0;
+}
+
+.tree-ul {
+  -webkit-padding-start: 0;
+}
+
+.treeview {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.list-group-item {
+
+  &.tree-li {
+    background-color: $black;
+    border-color: $black / 1.2;
+    border-left: 0;
+    border-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    color: $white;
+    outline: 0;
+
+    &.active {
+      background-color: $black / 1.5;
+    }
+  }
+}

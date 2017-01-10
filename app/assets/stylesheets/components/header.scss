@@ -1,0 +1,21 @@
+@import 'settings/variables/color';
+
+.navbar-default {
+  background-color: $light-color;
+
+  border-color: $base-color;
+
+}
+
+.navbar-nav {
+
+  .active {
+
+    a {
+      background-color: $base-color;
+      color: $white;
+    }
+  }
+}
+
+

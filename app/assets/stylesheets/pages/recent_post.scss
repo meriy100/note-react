@@ -1,0 +1,47 @@
+@import 'settings/variables/color';
+
+.recent-list {
+  height: 100%;
+}
+
+.resent-post-list {
+  border-left: 0;
+  border-right: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  height: 600px;
+  overflow: auto;
+
+  .path {
+    color: $black;
+    font-size: .8em;
+  }
+
+  .title {
+
+    a {
+      color: $black;
+
+      &:hover {/*マウスをのせたとき*/
+        color: $sub-color;
+        cursor: pointer;
+        font-style: normal;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .updated-user-name {
+    color: $black;
+    font-size: .8em;
+    text-align: right;
+  }
+}
+
+.resent-post-header {
+
+  h4 {
+    margin-bottom: 1px;
+    margin-top: 16px;
+  }
+}

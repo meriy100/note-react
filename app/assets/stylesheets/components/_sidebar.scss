@@ -1,0 +1,99 @@
+@import 'settings/variables/color';
+@import 'settings/variables/media';
+
+
+@media#{$over-small} {
+  .main-content {
+    margin-left: 80px;
+  }
+
+  .sidebar {
+    height: 100%;
+    padding: 0;
+    position: fixed;
+    width: 80px;
+
+    .nav-sidebar {
+      height: 100%;
+
+    }
+  }
+}
+
+.nav-ul {
+  margin-top: 16px;
+
+  li {
+    height: 80px;
+
+    a {
+      margin: auto 0;
+      margin-top: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    &.active::after {
+      border: 16px solid transparent;
+      border-right-color: $white;
+      content: '';
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      top: 40px - 16;
+    }
+
+    &.main.active::after {
+      border-right-color: $black;
+    }
+  }
+}
+
+@media#{$small} {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .nav-li {
+    border: 1px solid $gley-2;
+    box-sizing: border-box;
+    float: left;
+    padding: 0;
+    width: 16.66%;
+
+    a {
+      margin: 0 auto;
+      margin-top: 15px;
+      padding: 0;
+
+      i {
+        font-size: 1.5em;
+      }
+    }
+  }
+}
+
+.sidebar {
+  background-color: $base-color;
+}
+
+.nav-li {
+
+  a {
+
+    color: $base-color * 1.5;
+    text-align: center;
+
+    &:hover {
+      background-color: $base-color;
+      color: $white;
+    }
+  }
+
+  &.active {
+
+    a {
+      color: $white;
+    }
+  }
+}

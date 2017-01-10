@@ -1,0 +1,49 @@
+@import "settings/variables/_color.scss";
+.container{
+  margin-left: 0;
+  margin-right: 0;
+  width: auto;
+}
+
+a:hover{/*マウスをのせたとき*/
+  color:$sub-color;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+
+.gray-path{
+  color: #bbb;
+}
+
+html{height:100%}
+body{
+  height:100%;
+
+}
+div.container{height:100%}
+div.row.row-content{
+  height: 100%;
+  div.main-content{
+    height: 100%;
+    div.ng-scope{
+      margin-left: 0px;
+      height: 100%;
+      div.tree-list{
+        height : 100%;
+      }
+    }
+  }
+}
+td.title{
+  font-size : 1em;
+}
+td.updated-user{
+  font-size : 0.5em;
+}
+
+td.updated-at{
+  font-size : 0.5em;
+}
+
+
