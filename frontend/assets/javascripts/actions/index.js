@@ -1,4 +1,3 @@
-import { createAction } from "redux-actions";
 import axios from "axios";
 
 let nextPostId = 100
@@ -17,5 +16,10 @@ function newPost() {
   return {id: nextPostId, body: `abc${nextPostId}`}
 }
 
-export const clickActionAddPost = createAction('ADD_POST', newPost)
-export const clickActionQueryPosts = createAction('QUERY_POSTS', queryPosts)
+export const clickActionQueryPosts = (posts) => {
+  return { type: 'QUERY_POSTS', payload: posts }
+}
+
+export const clickActionAddPost = () => {
+  return { type: 'ADD_POST', payload: newPost() }
+}

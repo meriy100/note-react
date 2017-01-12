@@ -1,14 +1,16 @@
-import { handleActions } from "redux-actions"
+const initialState = {
+  posts: []
+};
 
-const posts = handleActions(
-  {
-    QUERY_POSTS: (state, action) => {
-      return action.payload
-    },
-    ADD_POST: (state, action) => {
-      return state.concat({id: action.payload.id, body: action.payload.body})
-    }
-  }, []
-)
-
-export default posts
+const posts = (state = initialState, action) => {
+  switch(action.type) {
+    case 'QUERY_POSTS':
+      return { posts: action.payload }
+    case 'ADD_POST':
+      console.log(state.posts)
+      return { posts: state.posts.concat({id: action.payload.id, body: action.payload.body}) }
+    default:
+      return state
+  }
+}
+export default  posts
