@@ -23,3 +23,7 @@ export const clickActionQueryPosts = (posts) => {
 export const clickActionAddPost = () => {
   return { type: 'ADD_POST', payload: newPost() }
 }
+
+export const queryTreePosts = () => {
+  return { type: 'QUERY_TREE_POSTS', payload: [{id: 1, name: "foo"}, {id: 2, name: "bar"}] }
+}

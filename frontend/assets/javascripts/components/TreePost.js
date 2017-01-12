@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 
-const TreePost = () => (
+const TreePost = ({name}) => (
   <li className="list-group-item tree-li">
-    node name
+    {name}
   </li>
 )
 

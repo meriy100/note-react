@@ -2,17 +2,16 @@ import { combineReducers } from 'redux'
 
 import posts from './posts'
 
-// const tree = handleActions(
-//   {
-//     QUERY_POSTS: (state, action) => {
-//       return action.payload
-//     },
-//     ADD_POST: (state, action) => {
-//       return state.concat({id: action.payload.id, body: action.payload.body})
-//     }
-//   }, []
-// )
 
-const note = combineReducers({posts})
+const treePosts = (state = [], action) => {
+  switch(action.type) {
+    case "QUERY_TREE_POSTS":
+      return action.payload
+    default:
+      return state
+  }
+}
+
+const note = combineReducers({posts, treePosts})
 
 export default note

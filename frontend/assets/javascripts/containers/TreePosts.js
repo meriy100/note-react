@@ -1,21 +1,24 @@
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { } from '../actions'
-import TreePost from '../components/TreePost'
+import { queryTreePosts } from '../actions'
+import TreePostList from '../components/TreePostList'
 
 const mapStateToProps = (state) => {
   return {
-    treePosts: state
+    treePosts: state.treePosts
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    queryTreePosts: dispatch(queryTreePosts())
   }
 }
+
 
 const TreePosts = connect(
   mapStateToProps,
   mapDispatchToProps
-)(TreePost)
+)(TreePostList)
 
 export default TreePosts
