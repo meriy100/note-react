@@ -13,6 +13,6 @@ import posts from './posts'
 //   }, []
 // )
 
-const note = posts
+const note = combineReducers({posts})
 
 export default note

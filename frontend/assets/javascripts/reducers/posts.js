@@ -1,14 +1,24 @@
-const initialState = {
-  posts: []
-};
+const postState = {
+  id: null,
+  body: ""
+}
 
-const posts = (state = initialState, action) => {
+const post = (state = {}, action) => {
+  switch (action.type) {
+    case "ADD_POST":
+      return { id: action.payload.id, body: action.payload.body }
+    default:
+      return state
+  }
+}
+
+const posts = (state = [], action) => {
   switch(action.type) {
     case 'QUERY_POSTS':
-      return { posts: action.payload }
+      return action.payload
     case 'ADD_POST':
       console.log(state.posts)
-      return { posts: state.posts.concat({id: action.payload.id, body: action.payload.body}) }
+      return state.concat(post(undefined, action))
     default:
       return state
   }
