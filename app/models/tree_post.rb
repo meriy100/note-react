@@ -1,6 +1,6 @@
 class TreePost
   include ActiveModel::Model
-  attr_accessor :children, :name, :post, :dipth, :parent
+  attr_accessor :id, :children, :name, :post, :dipth, :parent
 
   def self.tree(posts)
     TreePost.new.tap do |root_tree|
@@ -12,6 +12,7 @@ class TreePost
 
   def initialize(attributes = {})
     super
+    @id = (1..100000).to_a.sample
     @dipth ||= 0
     @children ||= []
   end

@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react'
 import PostListItem from './PostListItem'
+import { Link } from 'react-router'
 
 const Posts = ({ posts, clickQueryPosts, clickAddPost }) => (
   <div>
     <h1>Posts</h1>
+    <Link to="/">root</Link>
     <button onClick={ clickQueryPosts }>Query</button>
     <button onClick={ clickAddPost }>Add</button>
     <ul>

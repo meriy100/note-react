@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { queryTreePosts } from '../actions'
+import axios from 'axios'
+
+import { handleQueryTreePosts } from '../actions'
 import TreePostList from '../components/TreePostList'
 
 const mapStateToProps = (state) => {
@@ -9,9 +11,22 @@ const mapStateToProps = (state) => {
   }
 }
 
+const queryTreePosts = (dispatch) => {
+  let treePosts = [];
+  axios.get(`/api/tree_posts`).then((response) => {
+    treePosts = response.data
+  }).catch((response) => {
+     console.log(response)
+    treePosts = []
+  }).then(() => {
+    dispatch(handleQueryTreePosts(treePosts))
+  })
+}
+
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    queryTreePosts: dispatch(queryTreePosts())
+    queryTreePosts: queryTreePosts(dispatch)
   }
 }
 
