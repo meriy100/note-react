@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-import { handleQueryTreePosts } from '../actions'
+import { handleQueryTreePosts, handleToggleVisibleTreePost } from '../actions'
 import TreePostList from '../components/TreePostList'
 
 const mapStateToProps = (state) => {
@@ -26,7 +26,10 @@ const queryTreePosts = (dispatch) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    queryTreePosts: queryTreePosts(dispatch)
+    queryTreePosts: queryTreePosts(dispatch),
+    toggleVisibleTreePost: (id) => {
+      dispatch(handleToggleVisibleTreePost(id))
+    },
   }
 }
 

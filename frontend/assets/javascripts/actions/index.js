@@ -18,3 +18,7 @@ export const clickActionAddPost = () => {
 export const handleQueryTreePosts = (treePosts) => {
   return { type: 'QUERY_TREE_POSTS', payload: treePosts }
 }
+
+export const handleToggleVisibleTreePost = (treePostId) => {
+  return { type: 'TOGGLE_VISIBLE', payload: { id: treePostId } }
+}

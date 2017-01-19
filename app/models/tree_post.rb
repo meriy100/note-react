@@ -4,7 +4,7 @@ class TreePost
 
   def self.tree(posts)
     TreePost.new.tap do |root_tree|
-      posts.each do |post|
+      posts.order(path: :asc).each do |post|
         root_tree.insert_post(post.path.split('/'), post)
       end
     end

@@ -8,10 +8,9 @@ class TreePostList extends Component {
   }
 
   render() {
-    let { treePosts } = this.props
-    console.log(this.props)
+    let { treePosts, toggleVisibleTreePost } = this.props
     let treePostListItem = treePosts.map(treePost =>
-      <TreePost key={treePost.id} {...treePost} />
+      <TreePost key={treePost.id} visible={true} toggleVisibleTreePost={toggleVisibleTreePost} {...treePost} />
     )
     return (
       <ul className="treeview">
