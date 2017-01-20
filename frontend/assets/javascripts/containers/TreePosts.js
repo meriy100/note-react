@@ -8,7 +8,7 @@ import TreePostList from '../components/TreePostList'
 const mapStateToProps = (state) => {
   return {
     treePosts: state.treePosts,
-    postsPath: state.rootPostsPath
+    postsPath: state.postsPath
   }
 }
 
@@ -28,8 +28,8 @@ const queryTreePosts = (dispatch) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     queryTreePosts: queryTreePosts(dispatch),
-    clickTreePost: (id) => {
-      dispatch(handleClickTreePost(id))
+    clickTreePost: (id, path) => {
+      dispatch(handleClickTreePost(id, path))
     },
   }
 }

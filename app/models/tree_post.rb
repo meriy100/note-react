@@ -1,6 +1,6 @@
 class TreePost
   include ActiveModel::Model
-  attr_accessor :id, :children, :name, :post, :dipth, :parent
+  attr_accessor :id, :children, :name, :path, :post, :dipth, :parent
 
   def self.tree(posts)
     TreePost.new.tap do |root_tree|
@@ -15,6 +15,8 @@ class TreePost
     @id = (1..100000).to_a.sample
     @dipth ||= 0
     @children ||= []
+    @path ||= ""
+    @path.gsub!(/^\//, "")
   end
 
   def insert_post(paths, post)
@@ -22,7 +24,7 @@ class TreePost
     if (next_tree = find_in_children(current_path).presence)
       next_tree.insert_post(paths, post)
     else
-      append(name: current_path).insert_path_or_post(paths, post)
+      append(name: current_path, path: "#{path}/#{current_path}").insert_path_or_post(paths, post)
     end
   end
 
