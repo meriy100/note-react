@@ -5,6 +5,10 @@
   width: auto;
 }
 
+#root.root {
+  height: 100%;
+}
+
 a:hover{/*マウスをのせたとき*/
   color:$sub-color;
   text-decoration:none;
@@ -26,7 +30,7 @@ div.row.row-content{
   height: 100%;
   div.main-content{
     height: 100%;
-    div.ng-scope{
+    div.root-component{
       margin-left: 0px;
       height: 100%;
       div.tree-list{

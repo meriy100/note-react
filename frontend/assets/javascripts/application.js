@@ -9,7 +9,11 @@ import createLogger from 'redux-logger';
 
 import note from './reducers'
 import PostList from './containers/PostList'
+
+import App from "./components/App.jsx"
+
 import RootComponent from "./components/RootComponent"
+import Sidebar from "./components/Sidebar.jsx"
 
 let store = createStore(note,
   applyMiddleware(createLogger())
@@ -18,9 +22,10 @@ let store = createStore(note,
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/posts" component={PostList}></Route>
-      <Route path="/posts/:id" component={PostList}></Route>
-      <Route path="/" component={RootComponent}></Route>
+      <Route path="/" component={App}>
+        <Route path="/posts" component={PostList}></Route>
+        <Route path="/posts/:id" component={PostList}></Route>
+      </Route>
     </Router>
   </Provider>,
   document.getElementById('root')

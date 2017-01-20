@@ -10,6 +10,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 
+# UI/UX
+gem 'bootstrap-sass'
+gem 'bourbon'
+gem 'font-awesome-rails'
+
 # Configuration
 gem 'dotenv-rails'
 gem 'config', '~> 1.0.0'
