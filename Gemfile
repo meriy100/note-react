@@ -91,9 +91,6 @@ group :production do
 end
 
 group :test do
-  gem 'rails-controller-testing' # 今後これを使わないようなテストを書いていく
-  gem 'capybara'
-  gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'fuubar'
   gem 'launchy'

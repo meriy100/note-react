@@ -91,16 +91,6 @@ GEM
       sshkit (~> 1.3)
     capistrano3-unicorn (0.2.1)
       capistrano (~> 3.1, >= 3.1.0)
-    capybara (2.7.1)
-      addressable
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (~> 2.0)
-    capybara-webkit (1.11.1)
-      capybara (>= 2.3.0, < 2.8.0)
-      json
     carrierwave (1.0.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -504,8 +494,6 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     xml-simple (1.1.5)
-    xpath (2.0.0)
-      nokogiri (~> 1.3)
     yard (0.9.5)
 
 PLATFORMS
@@ -525,8 +513,6 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rbenv
   capistrano3-unicorn
-  capybara
-  capybara-webkit
   carrierwave
   carrierwave-data-uri
   coffee-rails (~> 4.2)
