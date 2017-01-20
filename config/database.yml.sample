@@ -1,0 +1,23 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: note_development
+
+test:
+  <<: *default
+  database: note_test
+
+production:
+  <<: *default
+  database: note_production
+  username: note
+  password: <%= ENV['NOTE_DATABASE_PASSWORD'] %>
+  socket: <%= ENV['NOTE_DATABASE_SOCKET'] %>
+  host: <%= ENV["NOTE_DATABASE_HOST_NAME"] %>
