@@ -19,6 +19,6 @@ export const handleQueryTreePosts = (treePosts) => {
   return { type: 'QUERY_TREE_POSTS', payload: treePosts }
 }
 
-export const handleToggleVisibleTreePost = (treePostId) => {
-  return { type: 'TOGGLE_VISIBLE', payload: { id: treePostId } }
+export const handleClickTreePost = (treePostId) => {
+  return { type: 'CLICK_TREE_POST', payload: { id: treePostId } }
 }

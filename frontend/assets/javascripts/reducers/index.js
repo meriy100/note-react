@@ -4,7 +4,7 @@ import posts from './posts'
 
 const treePost = (state = {}, action) => {
   switch(action.type) {
-    case "TOGGLE_VISIBLE":
+    case "CLICK_TREE_POST":
       if(state.id !== action.payload.id) {
         return Object.assign({}, state, {
           children: state.children.map(child =>
@@ -24,7 +24,7 @@ const treePosts = (state = [], action) => {
   switch(action.type) {
     case "QUERY_TREE_POSTS":
       return action.payload
-    case "TOGGLE_VISIBLE":
+    case "CLICK_TREE_POST":
       return state.map(t =>
         treePost(t, action)
       )
