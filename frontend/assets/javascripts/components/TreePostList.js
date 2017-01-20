@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import TreePost from './TreePost'
+import TreePost from './TreePost.jsx'
 
 class TreePostList extends Component {
   componentDidMount() {

@@ -19,6 +19,7 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/posts" component={PostList}></Route>
+      <Route path="/posts/:id" component={PostList}></Route>
       <Route path="/" component={RootComponent}></Route>
     </Router>
   </Provider>,
