@@ -26,6 +26,7 @@ render(
         <Route path="/posts" component={PostList}></Route>
         <Route path="/posts/:id" component={PostList}></Route>
       </Route>
+      <Route path="*" component={App}/>
     </Router>
   </Provider>,
   document.getElementById('root')
