@@ -73,11 +73,10 @@ group :development, :test do
   gem 'migration_comments'
 
   # Deploy
-  gem 'capistrano', '3.5.0'
+  gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
-  gem 'capistrano3-unicorn'
 
   # Dummy Data
   gem "faker"
