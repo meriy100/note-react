@@ -21,4 +21,8 @@ class Post < ApplicationRecord
     end
     root_tree
   end
+
+  def name
+    self.path.split("/").last || ""
+  end
 end

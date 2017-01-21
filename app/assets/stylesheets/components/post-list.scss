@@ -1,0 +1,32 @@
+@import 'settings/variables/color';
+@import 'settings/variables/media';
+@import 'bourbon';
+
+
+.post-list {
+  ul.post-list {
+    li.post-list-item {
+      border: 0px solid $gray-d;
+      border-top: 1px solid $gray-d;
+      border-radius: 0px;
+      padding: 15px 0;
+      &:first-child {
+        border-top: 3px solid $gray-d;
+      }
+      &:last-child {
+        border-bottom: 3px solid $gray-d;
+      }
+      h2.post-title {
+        font-size: 170%;
+        a.post-title-link {
+          color: $black;
+          &:hover {
+            color: $sub-color;
+            text-decoration: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

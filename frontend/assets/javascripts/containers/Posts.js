@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import axios from "axios";
 
 import { clickActionQueryPosts, clickActionAddPost } from '../actions'
-import Posts from '../components/Posts'
+import PostList from '../components/PostList.jsx'
 
 
 const mapStateToProps = (state) => {
@@ -31,9 +31,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const PostList = connect(
+const Posts = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Posts)
+)(PostList)
 
-export default PostList
+export default Posts

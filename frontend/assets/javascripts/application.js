@@ -8,7 +8,7 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 import createLogger from 'redux-logger';
 
 import note from './reducers'
-import PostList from './containers/PostList'
+import Posts from './containers/Posts'
 
 import App from "./components/App.jsx"
 
@@ -23,8 +23,8 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <Route path="/posts" component={PostList}></Route>
-        <Route path="/posts/:id" component={PostList}></Route>
+        <Route path="/posts" component={Posts}></Route>
+        <Route path="/posts/:id" component={Posts}></Route>
       </Route>
       <Route path="*" component={App}/>
     </Router>
