@@ -40,8 +40,6 @@ set :keep_releases, 5
 set :rbenv_ruby, '2.3.0'
 set :log_level, :debug
 
-set :nodebrew_node, 'io@v6.0.0'
-
 namespace :deploy do
   desc 'Restart application'
   task :restart do
