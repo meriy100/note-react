@@ -27,6 +27,16 @@
           }
         }
       }
+      .post-list-fotter {
+        display: flex;
+        .post-record {
+          display: flex;
+          margin-left: auto;
+          a.authour-name-link {
+            padding-left: 2px;
+          }
+        }
+      }
     }
   }
 }

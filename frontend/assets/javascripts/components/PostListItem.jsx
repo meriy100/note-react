@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 class PostListItem extends Component {
   static propTypes = { initialCount: React.PropTypes.number };
   render() {
-    let { id, path, name } = this.props
+    let { id, path, name, createdUser } = this.props
     return(
       <li className="list-group-item post-list-item">
         <div className="post-list-item-inner">
@@ -19,7 +19,13 @@ class PostListItem extends Component {
                 Edit
               </Link>
             </h2>
-            <div className="fotter">
+            <div className="post-list-fotter">
+              <div className="post-record">
+                <div className="post-autour">
+                  <span>Created by</span>
+                  <Link to="/" className="authour-name-link">{createdUser.name}</Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
