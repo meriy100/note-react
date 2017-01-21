@@ -1,6 +1,6 @@
 def json_tree(tree, json)
   json.array! tree.children do |child|
-    json.set! :id, child.id
+    json.set! :id, child.path.hash
     json.set! :name, child.name
     json.set! :path, child.path
     json.set! :post, child.post

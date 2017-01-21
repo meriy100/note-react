@@ -4,13 +4,20 @@ import { Link } from 'react-router'
 class PostListItem extends Component {
   static propTypes = { initialCount: React.PropTypes.number };
   render() {
-    let { id, path, name, createdUser } = this.props
+    let { id, path, pathList, name, createdUser, clickPathListItem, queryPosts } = this.props
     return(
       <li className="list-group-item post-list-item">
         <div className="post-list-item-inner">
           <div className="post-list-item-right">
             <div className="path-list">
-              <Link>{path}</Link>
+              {pathList.map(pathListItem =>
+                <a className="path-list-link" key={pathListItem.id}
+                  onClick={()=>{
+                    clickPathListItem(pathListItem.id, pathListItem.path)
+                    queryPosts({ path_start: pathListItem.path }) }}>
+                  <span className="name">{pathListItem.name}</span><span className="slash">/</span>
+                </a>
+              )}
             </div>
             <h2 className="post-title">
               <Link  to={`posts/${id}`} className="post-title-link">{name}</Link>

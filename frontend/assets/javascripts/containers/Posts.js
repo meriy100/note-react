@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
 import axios from "axios";
 
-import { clickActionQueryPosts, clickActionAddPost } from '../actions'
+import { clickActionQueryPosts, handleClickTreePost } from '../actions'
 import PostList from '../components/PostList.jsx'
 
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts
+    posts: state.posts,
+    postsPath: state.postsPath
   }
 }
 
@@ -26,8 +27,10 @@ const queryPosts = (dispatch, params = {}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    clickQueryPosts: (params) => queryPosts(dispatch, params),
-    clickAddPost: () => dispatch(clickActionAddPost())
+    queryPosts: (params) => queryPosts(dispatch, params),
+    clickPathListItem: (id, path) => {
+      dispatch(handleClickTreePost(id, path))
+    },
   }
 }
 

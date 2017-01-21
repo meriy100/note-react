@@ -16,6 +16,16 @@
       &:last-child {
         border-bottom: 3px solid $gray-d;
       }
+      .path-list {
+        a.path-list-link {
+          span.name {
+            padding-left: 1px;
+          }
+          span.slash {
+            padding-left: 3px;
+          }
+        }
+      }
       h2.post-title {
         font-size: 170%;
         a.post-title-link {

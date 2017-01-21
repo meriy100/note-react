@@ -12,7 +12,6 @@ class TreePost
 
   def initialize(attributes = {})
     super
-    @id = (1..100000).to_a.sample
     @dipth ||= 0
     @children ||= []
     @path ||= ""

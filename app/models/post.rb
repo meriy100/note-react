@@ -26,6 +26,18 @@ class Post < ApplicationRecord
   end
 
   def name
-    self.path.split("/").last || ""
+    paths.last || ""
+  end
+
+  def path_list
+    least_path = ""
+    paths[0..-2].map do |name|
+      this_path = least_path.concat("/#{name}").gsub(/^\//, "")
+      { id: this_path.hash, path: this_path, name: name }
+    end
+  end
+
+  def paths
+    @paths ||= path.split("/")
   end
 end
