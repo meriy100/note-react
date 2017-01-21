@@ -42,4 +42,13 @@ class Post < ApplicationRecord
   def paths
     @paths ||= path.split("/")
   end
+
+  def summaries
+    body.split("\n").map do |line|
+      if matcher = line.match(/^(?<level>\#{1,3})\s(?<title>\S*)/)
+        { level: matcher[:level].length, title: matcher[:title] }
+      end
+    end
+    .compact
+  end
 end

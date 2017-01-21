@@ -2,6 +2,8 @@ const postState = {
   id: null,
   pathList: [],
   name: "",
+  body: "",
+  summaries: [],
   user: {},
 }
 const post = (state = postState, action) => {

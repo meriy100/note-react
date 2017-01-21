@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { Link } from 'react-router'
+import ReactMarkdown from 'react-markdown'
 
 class PostComponent extends Component {
   componentDidMount() {
@@ -31,6 +32,20 @@ class PostComponent extends Component {
             </h1>
             <div className="post-fotter">
             </div>
+          </div>
+        </div>
+        <div className="row post-body">
+          <div className="col-md-6 post-body-markdown">
+            <ReactMarkdown source={post.body} />
+          </div>
+          <div className="post-summaries">
+            <ul className="post-summary-list">
+              {post.summaries.map(summary =>
+                <li className={`post-summary-list-item item-h${summary.level}`}>
+                  <Link to="">{summary.title}</Link>
+                </li>
+              )}
+            </ul>
           </div>
         </div>
       </div>
