@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-import { handleQueryTreePosts, handleClickTreePost } from '../actions'
+import { clickActionQueryPosts, handleQueryTreePosts, handleClickTreePost } from '../actions'
 import TreePostList from '../components/TreePostList'
 
 const mapStateToProps = (state) => {
@@ -24,10 +24,22 @@ const queryTreePosts = (dispatch) => {
   })
 }
 
+const queryPosts = (dispatch, params = {}) => {
+  let posts = [];
+  axios.get(`/api/posts`, {params: params}).then((response) => {
+    posts = response.data
+  }).catch((response) => {
+     console.log(response)
+    posts = []
+  }).then(() => {
+    dispatch(clickActionQueryPosts(posts))
+  })
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     queryTreePosts: queryTreePosts(dispatch),
+    queryPosts: (params) => queryPosts(dispatch, params),
     clickTreePost: (id, path) => {
       dispatch(handleClickTreePost(id, path))
     },

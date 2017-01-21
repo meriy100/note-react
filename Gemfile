@@ -28,6 +28,9 @@ gem 'carrierwave-data-uri'
 gem 'rmagick'
 gem 'fog'
 
+# Seach
+gem "ransack"
+
 group :development, :test do
   gem 'byebug', platform: :mri
 

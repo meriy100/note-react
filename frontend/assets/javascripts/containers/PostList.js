@@ -11,9 +11,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const queryPosts = (dispatch) => {
+const queryPosts = (dispatch, params = {}) => {
   let posts = [];
-  axios.get(`/api/posts`).then((response) => {
+  axios.get(`/api/posts`, {params}).then((response) => {
     posts = response.data
   }).catch((response) => {
      console.log(response)
@@ -26,7 +26,7 @@ const queryPosts = (dispatch) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    clickQueryPosts: () => queryPosts(dispatch),
+    clickQueryPosts: (params) => queryPosts(dispatch, params),
     clickAddPost: () => dispatch(clickActionAddPost())
   }
 }

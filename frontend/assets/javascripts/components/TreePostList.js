@@ -8,9 +8,13 @@ class TreePostList extends Component {
   }
 
   render() {
-    let { treePosts, clickTreePost } = this.props
+    let { treePosts, clickTreePost, queryPosts } = this.props
     let treePostListItem = treePosts.map(treePost =>
-      <TreePost key={treePost.id} visible={true} clickTreePost={clickTreePost} {...treePost} />
+      <TreePost key={treePost.id}
+        visible={true}
+        clickTreePost={clickTreePost}
+        queryPosts={queryPosts}
+        {...treePost} />
     )
     return (
       <ul className="treeview">
