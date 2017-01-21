@@ -11,6 +11,24 @@ export const clickActionQueryPosts = (posts) => {
   return { type: 'QUERY_POSTS', payload: posts }
 }
 
+const axiosGetPost = (post) => {
+  return { type: "GET_POST", payload: post}
+}
+
+export const handleGetPost = (postId) => {
+  let post = {}
+  return (dispatch) => {
+    axios.get(`/api/posts/${postId}`).then((response) => {
+      post = response.data
+    }).catch((response) => {
+       console.log(response)
+      post = {}
+    }).then(() => {
+      dispatch(axiosGetPost(post))
+    })
+  }
+}
+
 export const handleQueryTreePosts = (treePosts) => {
   return { type: 'QUERY_TREE_POSTS', payload: treePosts }
 }

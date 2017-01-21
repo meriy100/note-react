@@ -1,0 +1,31 @@
+@import 'settings/variables/color';
+@import 'settings/variables/media';
+@import 'bourbon';
+
+
+.post-component {
+  margin: 40px 50px;
+  .post-header {
+    .post-header-left {
+      .post-path-list {
+        font-size: 130%;
+        a.path-list-link {
+          span.name {
+            padding-left: 1px;
+          }
+          span.slash {
+            padding-left: 3px;
+          }
+        }
+      }
+      h1.post-title {
+        font-size: 280%;
+        span.post-title {
+          color: $black;
+        }
+      }
+      .post-footer {
+      }
+    }
+  }
+}

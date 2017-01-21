@@ -1,6 +1,7 @@
 const postState = {
   id: null,
-  body: ""
+  body: "",
+  name: "",
 }
 
 const post = (state = {}, action) => {

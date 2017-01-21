@@ -14,6 +14,7 @@ import App from "./components/App.jsx"
 
 import RootComponent from "./components/RootComponent"
 import Sidebar from "./components/Sidebar.jsx"
+import Post from "./containers/Post"
 
 let store = createStore(note,
   applyMiddleware(createLogger())
@@ -24,7 +25,7 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <Route path="/posts" component={Posts}></Route>
-        <Route path="/posts/:id" component={Posts}></Route>
+        <Route path="/posts/:id" component={Post}></Route>
       </Route>
       <Route path="*" component={App}/>
     </Router>

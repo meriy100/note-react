@@ -5,7 +5,7 @@ import PostPathList from './PostListItem/PostPathList.jsx'
 class PostListItem extends Component {
   static propTypes = { initialCount: React.PropTypes.number };
   render() {
-    let { id, path, pathList, name, createdUser, clickPathListItem, queryPosts } = this.props
+    let { id, pathList, name, createdUser, clickPathListItem, queryPosts } = this.props
     return(
       <li className="list-group-item post-list-item">
         <div className="post-list-item-inner">
