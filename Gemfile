@@ -90,6 +90,7 @@ end
 group :production do
   # Application server
   gem "unicorn"
+  gem 'therubyracer', platforms: :ruby
 end
 
 group :test do
