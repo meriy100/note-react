@@ -17,6 +17,8 @@ class Post < ApplicationRecord
   belongs_to :created_user, class_name: :User
   belongs_to :updated_user, class_name: :User
 
+  validates :path, uniqueness: true
+
   def self.tree
     root_tree = TreePost.new
     each do |post|

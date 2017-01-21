@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { Link } from 'react-router'
+import PostPathList from './PostListItem/PostPathList.jsx'
 
 class PostListItem extends Component {
   static propTypes = { initialCount: React.PropTypes.number };
@@ -9,16 +10,9 @@ class PostListItem extends Component {
       <li className="list-group-item post-list-item">
         <div className="post-list-item-inner">
           <div className="post-list-item-right">
-            <div className="path-list">
-              {pathList.map(pathListItem =>
-                <a className="path-list-link" key={pathListItem.id}
-                  onClick={()=>{
-                    clickPathListItem(pathListItem.id, pathListItem.path)
-                    queryPosts({ path_start: pathListItem.path }) }}>
-                  <span className="name">{pathListItem.name}</span><span className="slash">/</span>
-                </a>
-              )}
-            </div>
+            <PostPathList clickPathListItem={clickPathListItem}
+              queryPosts={queryPosts}
+              pathList={pathList}/>
             <h2 className="post-title">
               <Link  to={`posts/${id}`} className="post-title-link">{name}</Link>
               <Link to={`posts/${id}/edit`} className="btn btn-primary">
