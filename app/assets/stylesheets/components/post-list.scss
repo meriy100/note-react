@@ -4,6 +4,8 @@
 
 
 .post-list {
+  height: 100%;
+  overflow: scroll;
   ul.post-list {
     li.post-list-item {
       border: 0px solid $gray-d;
