@@ -46,7 +46,7 @@ set :default_env, { path: "$HOME/.rbenv/bin:$HOME/.nodebrew/current/bin:$PATH" }
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:start'
+    invoke 'unicorn:restart'
   end
 
   desc 'Create database'
