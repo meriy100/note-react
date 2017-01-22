@@ -40,6 +40,9 @@ set :keep_releases, 5
 set :rbenv_ruby, '2.3.0'
 set :log_level, :debug
 
+#capistrano用bundleするのに必要
+set :default_env, { path: "$HOME/.rbenv/bin:/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH" }
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
