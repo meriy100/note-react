@@ -1,37 +1,65 @@
+#unicornのpidファイル、設定ファイルのディレクトリを指定
 namespace :unicorn do
-  ##
-  # Tasks
-  ##
-  desc "Start unicorn for development env."
-  task(:start) do
-    config = Rails.root.join("config", "unicorn.rb")
-    sh "bundle exec unicorn_rails -c #{config} -E production -D"
+  task :environment do
+    set :unicorn_pid,    "#{current_path}/tmp/pids/unicorn.pid"
+    set :unicorn_config, "#{current_path}/config/unicorn/production.rb"
   end
 
-  desc "Stop unicorn"
-  task(:stop) { unicorn_signal :QUIT }
-
-  desc "Restart unicorn with USR2"
-  task(:restart) { unicorn_signal :USR2 }
-
-  desc "Increment number of worker processes"
-  task(:increment) { unicorn_signal :TTIN }
-
-  desc "Decrement number of worker processes"
-  task(:decrement) { unicorn_signal :TTOU }
-
-  desc "Unicorn pstree (depends on pstree command)"
-  task(:pstree) do
-    sh "pstree '#{unicorn_pid}'"
+#unicornをスタートさせるメソッド
+  def start_unicorn
+    within current_path do
+      execute :bundle, :exec, :unicorn, "-c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
+    end
   end
 
-  def unicorn_signal(signal)
-    Process.kill signal, unicorn_pid
+#unicornを停止させるメソッド
+  def stop_unicorn
+    execute :kill, "-s QUIT $(< #{fetch(:unicorn_pid)})"
   end
 
-  def unicorn_pid
-    File.read("#{ENV['RAILS_ROOT']}/tmp/unicorn.pid").to_i
-  rescue Errno::ENOENT
-    raise "Unicorn doesn't seem to be running"
+#unicornを再起動するメソッド
+  def reload_unicorn
+    execute :kill, "-s USR2 $(< #{fetch(:unicorn_pid)})"
+  end
+
+#unicronを強制終了するメソッド
+  def force_stop_unicorn
+    execute :kill, "$(< #{fetch(:unicorn_pid)})"
+  end
+
+#unicornをスタートさせるtask
+  desc "Start unicorn server"
+  task start: :environment do
+    on roles(:app) do
+      start_unicorn
+    end
+  end
+
+#unicornを停止させるtask
+  desc "Stop unicorn server gracefully"
+  task stop: :environment do
+    on roles(:app) do
+      stop_unicorn
+    end
+  end
+
+#既にunicornが起動している場合再起動を、まだの場合起動を行うtask
+  desc "Restart unicorn server gracefully"
+  task restart: :environment do
+    on roles(:app) do
+      if test("[ -f #{fetch(:unicorn_pid)} ]")
+        reload_unicorn
+      else
+        start_unicorn
+      end
+    end
+  end
+
+#unicornを強制終了させるtask
+  desc "Stop unicorn server immediately"
+  task force_stop: :environment do
+    on roles(:app) do
+      force_stop_unicorn
+    end
   end
 end
