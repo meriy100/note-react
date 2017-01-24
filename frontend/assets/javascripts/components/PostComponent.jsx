@@ -25,7 +25,7 @@ class PostComponent extends Component {
             </div>
             <h1 className="post-title">
               <span className="post-title">{post.name}</span>
-              <Link to={`posts/${post.id}/edit`} className="btn btn-primary">
+              <Link to={`/posts/${post.id}/edit`} className="btn btn-primary">
                 <i className="fa fa-pencil" />
                 Edit
               </Link>
