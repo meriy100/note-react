@@ -14,8 +14,8 @@ class PostListItem extends Component {
               queryPosts={queryPosts}
               pathList={pathList}/>
             <h2 className="post-title">
-              <Link  to={`posts/${id}`} className="post-title-link">{name}</Link>
-              <Link to={`posts/${id}/edit`} className="btn btn-primary">
+              <Link  to={`/posts/${id}`} className="post-title-link">{name}</Link>
+              <Link to={`/posts/${id}/edit`} className="btn btn-primary">
                 <i className="fa fa-pencil" />
                 Edit
               </Link>
