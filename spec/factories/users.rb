@@ -19,7 +19,8 @@
 #  index_users_on_email  (email) UNIQUE
 #
 
-class User < ApplicationRecord
-  authenticates_with_sorcery!
-  has_many :posts
+FactoryGirl.define do
+  factory :user do
+    
+  end
 end

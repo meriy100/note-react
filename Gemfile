@@ -15,6 +15,9 @@ gem 'bootstrap-sass'
 gem 'bourbon'
 gem 'font-awesome-rails'
 
+# Template
+gem "slim"
+
 # Configuration
 gem 'dotenv-rails'
 gem 'config', '~> 1.0.0'
@@ -30,6 +33,8 @@ gem 'fog'
 
 # Seach
 gem "ransack"
+
+gem "sorcery"
 
 group :development, :test do
   gem 'byebug', platform: :mri
