@@ -36,3 +36,7 @@ export const handleQueryTreePosts = (treePosts) => {
 export const handleClickTreePost = (id, path) => {
   return { type: 'CLICK_TREE_POST', payload: { id, path } }
 }
+
+export const handleEditBody = (body) => {
+  return { type: "EDIT_BODY", payload: { body } }
+}

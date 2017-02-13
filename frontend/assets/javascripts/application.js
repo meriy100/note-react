@@ -9,6 +9,7 @@ import createLogger from 'redux-logger';
 
 import note from './reducers'
 import Posts from './containers/Posts'
+import PostEditor from './containers/PostEditor'
 
 import App from "./components/App.jsx"
 
@@ -27,7 +28,7 @@ render(
         <Route path="/posts" component={Posts}></Route>
         <Route path="/posts/new" component={Posts}></Route>
         <Route path="/posts/:id" component={Post}></Route>
-        <Route path="/posts/:id/edit" component={Post}></Route>
+        <Route path="/posts/:id/edit" component={PostEditor}></Route>
       </Route>
       <Route path="*" component={App}/>
     </Router>
