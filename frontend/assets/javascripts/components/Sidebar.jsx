@@ -20,10 +20,10 @@ class Sidebar extends Component {
               </Link>
             </li>
             <li className="nav-li">
-              <Link to="/logout" >
+              <a href="/logout" >
                 <i className="fa fa-sign-out fa-3x" />
                 <p>Logout</p>
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>

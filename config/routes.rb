@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
+  get 'logout' => 'user_sessions#destroy'
 
   get "/(*all)", to: "front#index"
   root "front#index"
