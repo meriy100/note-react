@@ -12,13 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170129034300) do
 
-  create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "post_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "post_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "post_id"
     t.integer  "tag_id"
     t.datetime "deleted_at"
@@ -26,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170129034300) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "path"
     t.text     "body",            limit: 65535
     t.integer  "created_user_id"
@@ -37,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170129034300) do
     t.string   "aasm_state"
   end
 
-  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "created_user_id"
     t.integer  "updated_user_id"
@@ -46,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170129034300) do
     t.datetime "updated_at",      null: false
   end
 
-  create_table "templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "path"
     t.text     "body",            limit: 65535
     t.integer  "created_user_id"
@@ -56,17 +50,14 @@ ActiveRecord::Schema.define(version: 20170129034300) do
     t.datetime "updated_at",                    null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "email",                          null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "joinyear"
-    t.integer  "role"
-    t.integer  "status"
-    t.text     "description",      limit: 65535
+    t.string   "email",                            null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "crypted_password"
     t.string   "salt"
+    t.boolean  "admin",            default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
