@@ -21,3 +21,4 @@ config/database.yml
 .env
 node_modules/
 app/assets/javascripts/application.bundle.js
+*.swp
