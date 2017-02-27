@@ -5,8 +5,12 @@ require('codemirror/mode/markdown/markdown')
 
 class PostEditorComponent extends Component {
   componentDidMount() {
-    let { params, getPost } = this.props
-    getPost(params.id)
+    let { params, getPost, setNewPost } = this.props
+    if(params.id) {
+      getPost(params.id)
+    } else {
+      setNewPost()
+    }
   }
 
   handleEditBody(body) {

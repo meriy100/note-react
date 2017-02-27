@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { handleGetPost, handleEditBody, handleEditPath, handleSubmitPost } from '../actions'
+import { handleGetPost, handleEditBody, handleEditPath, handleSubmitPost, setNewPost } from '../actions'
 import PostEditorComponent from '../components/PostEditorComponent.jsx'
 
 
@@ -13,8 +13,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getPost: (id) => { handleGetPost(id)(dispatch) },
-    editBody: (body) => dispatch(handleEditBody(body)),
+    setNewPost: () => dispatch(setNewPost()),
     editPath: (path) => dispatch(handleEditPath(path)),
+    editBody: (body) => dispatch(handleEditBody(body)),
     submitPost: (post) => { handleSubmitPost(post)(dispatch) },
   }
 }

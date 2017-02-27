@@ -7,6 +7,13 @@ class Api::PostsController < ApplicationController
     find_post
   end
 
+  def create
+    @post = Post.new(post_params)
+    @post.created_user = current_user
+    @post.save!
+    render :show
+  end
+
   def update
     find_post.update!(post_params)
     render :show

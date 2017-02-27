@@ -1,13 +1,6 @@
 import axios from "axios";
 import axiosHelper from '../lib/axiosHelper'
 
-let nextPostId = 100
-
-function newPost() {
-  nextPostId++
-  return {id: nextPostId, body: `abc${nextPostId}`}
-}
-
 export const clickActionQueryPosts = (posts) => {
   return { type: 'QUERY_POSTS', payload: posts }
 }
@@ -46,15 +39,48 @@ export const handleEditPath = (path) => {
   return { type: "EDIT_PATH", payload: { path } }
 }
 
-export const handleSubmitPost = (post) => {
+const updatePost = (post) => {
   return (dispatch) => {
     axiosHelper.patch(`/api/posts/${post.id}`, 
-      { post: post }
-    ).then((response) => {
+      { 
+        post: {
+        path: post.path,
+        body: post.body,
+      } 
+    }).then((response) => {
       post = response.data
       dispatch(axiosGetPost(post))
     }).catch((response) => {
       console.log(response)
     })
   }
+}
+
+const createPost = (post) => {
+  return (dispatch) => {
+    axiosHelper.post(`/api/posts/`,
+    {
+      post: {
+        path: post.path,
+        body: post.body,
+      } 
+    }).then((response) => {
+      post = response.data
+      dispatch(axiosGetPost(post))
+    }).catch((response) => {
+      console.log(response)
+    })
+  }
+}
+
+export const handleSubmitPost = (post) => {
+  if(post.id) {
+    return updatePost(post)  
+  } else {
+    return createPost(post)
+  }
+}
+
+export const setNewPost = () => {
+  return { type: "SET_NEW_POST", payload: { } }
 }

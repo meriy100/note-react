@@ -27,7 +27,7 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <Route path="/posts" component={Posts}></Route>
-        <Route path="/posts/new" component={Posts}></Route>
+        <Route path="/posts/new" component={PostEditorMaster}></Route>
         <Route path="/posts/:id" component={Post}></Route>
         <Route path="/posts/:id/edit" component={PostEditorMaster}></Route>
       </Route>
