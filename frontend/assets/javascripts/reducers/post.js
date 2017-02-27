@@ -2,6 +2,7 @@ const postState = {
   id: null,
   pathList: [],
   name: "",
+  path: "",
   body: "",
   summaries: [],
   user: {},
@@ -14,10 +15,14 @@ const post = (state = postState, action) => {
       return Object.assign({}, state, {
         body: action.payload.body
       })
-    case "EDIT_NAME":
+    case "EDIT_PATH":
+      var splitPath = action.payload.path.split("/")
       return Object.assign({}, state, {
-        name: action.payload.name
+        path: action.payload.path,
+        name: splitPath[splitPath.length - 1]
       })
+    case "SET_NEW_POST":
+      return postState
     default:
       return state
   }

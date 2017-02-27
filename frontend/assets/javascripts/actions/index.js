@@ -1,11 +1,5 @@
 import axios from "axios";
-
-let nextPostId = 100
-
-function newPost() {
-  nextPostId++
-  return {id: nextPostId, body: `abc${nextPostId}`}
-}
+import axiosHelper from '../lib/axiosHelper'
 
 export const clickActionQueryPosts = (posts) => {
   return { type: 'QUERY_POSTS', payload: posts }
@@ -39,4 +33,54 @@ export const handleClickTreePost = (id, path) => {
 
 export const handleEditBody = (body) => {
   return { type: "EDIT_BODY", payload: { body } }
+}
+
+export const handleEditPath = (path) => {
+  return { type: "EDIT_PATH", payload: { path } }
+}
+
+const updatePost = (post) => {
+  return (dispatch) => {
+    return axiosHelper.patch(`/api/posts/${post.id}`, 
+      { 
+        post: {
+        path: post.path,
+        body: post.body,
+      } 
+    }).then((response) => {
+      post = response.data
+      dispatch(axiosGetPost(post))
+    }).catch((response) => {
+      console.log(response)
+    })
+  }
+}
+
+const createPost = (post) => {
+  return (dispatch) => {
+    return axiosHelper.post(`/api/posts/`,
+    {
+      post: {
+        path: post.path,
+        body: post.body,
+      } 
+    }).then((response) => {
+      post = response.data
+      dispatch(axiosGetPost(post))
+    }).catch((response) => {
+      console.log(response)
+    })
+  }
+}
+
+export const handleSubmitPost = (post) => {
+  if(post.id) {
+    return updatePost(post)  
+  } else {
+    return createPost(post)
+  }
+}
+
+export const setNewPost = () => {
+  return { type: "SET_NEW_POST", payload: { } }
 }
