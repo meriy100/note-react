@@ -5,6 +5,7 @@
 #  id              :integer          not null, primary key
 #  path            :string(255)
 #  body            :text(65535)
+#  template        :boolean          default("0"), not null
 #  created_user_id :integer
 #  updated_user_id :integer
 #  deleted_at      :datetime
