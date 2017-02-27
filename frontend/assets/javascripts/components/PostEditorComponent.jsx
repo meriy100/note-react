@@ -23,4 +23,3 @@ class PostEditorComponent extends Component {
 }
 
 export default PostEditorComponent
-
