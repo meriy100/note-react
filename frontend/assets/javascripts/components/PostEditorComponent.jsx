@@ -14,15 +14,26 @@ class PostEditorComponent extends Component {
     editBody(body)
   }
 
+  handleEditPath(path) {
+    let { editPath } = this.props
+    editPath(path)
+  }
+
   render() {
-    let { post, editBody } = this.props
+    let { post, submitPost } = this.props
     let options = {
       lineNumbers: true,
       mode: 'markdown',
     }
     return (
-      <div>
+      <div >
+        <div className="form-group">
+          <input value={post.path} onChange={ (e) => this.handleEditPath(e.target.value) } className="form-control" />
+        </div>
         <CodeMirror value={post.body} onChange={ this.handleEditBody.bind(this) } options={options} />
+        <div className="from-group">
+          <button onClick={(e) => submitPost(post)} className='btn btn-primary'>保存</button>
+        </div>
       </div>
     )
   }

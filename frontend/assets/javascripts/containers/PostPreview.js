@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+
 import PostPreviewComponent from '../components/PostPreviewComponent.jsx'
 
 const mapStateToProps = (state) => {

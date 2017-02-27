@@ -9,7 +9,7 @@ class PostEidorMaster extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-6 editor post-editor">
           <PostEditor params={this.props.params} />
         </div>
         <div className="col-md-6">

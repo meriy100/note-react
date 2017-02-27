@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :api do
-    resources :posts, only: [:index, :show], defaults: { format: :json }
+    resources :posts, only: [:index, :show, :update], defaults: { format: :json }
     resources :tree_posts, only: [:index], defaults: { format: :json }
   end
 
