@@ -11,11 +11,6 @@ Rails.application.routes.draw do
   post 'logout' => 'user_sessions#destroy', as: :logout
   get 'logout' => 'user_sessions#destroy'
 
-  namespace :admin do
-    get '/' => 'dashboard#index'
-    resources :users, only:[:index, :new, :create]   
-  end
-
   get "/(*all)", to: "front#index"
   root "front#index"
 end
