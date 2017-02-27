@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from 'react'
-import { Link } from 'react-router'
+import CodeMirror from 'react-codemirror'
+import { Link } from 'react-router' 
+require('codemirror/mode/markdown/markdown')
 
 class PostEditorComponent extends Component {
   componentDidMount() {
@@ -7,16 +9,20 @@ class PostEditorComponent extends Component {
     getPost(params.id)
   }
 
-  handleEditBody(e) {
+  handleEditBody(body) {
     let { editBody } = this.props
-    editBody(e.target.value)
+    editBody(body)
   }
 
   render() {
     let { post, editBody } = this.props
+    let options = {
+      lineNumbers: true,
+      mode: 'markdown',
+    }
     return (
       <div>
-        <textarea value={post.body} onChange={ (e) => this.handleEditBody(e) } />
+        <CodeMirror value={post.body} onChange={ this.handleEditBody.bind(this) } options={options} />
       </div>
     )
   }
