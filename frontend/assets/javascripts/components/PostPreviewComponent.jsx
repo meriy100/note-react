@@ -9,9 +9,11 @@ class PostPreviewComponent extends Component {
   render() {
     let { post } = this.props
     return (
-      <div className="post-form">
+      <div className="post-preview">
         <h1>{post.name}</h1>
-        <ReactMarkdown source={post.body} />
+        <div className="post-body-markdown">
+            <ReactMarkdown source={post.body} />
+        </div>
       </div>
     )
   }

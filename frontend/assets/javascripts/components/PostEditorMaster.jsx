@@ -8,7 +8,7 @@ import PostPreview from '../containers/PostPreview'
 class PostEidorMaster extends Component {
   render() {
     return (
-      <div className="row">
+      <div className="row post-editor-master">
         <div className="col-md-6 editor post-editor">
           <PostEditor params={this.props.params} />
         </div>

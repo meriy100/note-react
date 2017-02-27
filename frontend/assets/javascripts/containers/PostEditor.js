@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     setNewPost: () => dispatch(setNewPost()),
     editPath: (path) => dispatch(handleEditPath(path)),
     editBody: (body) => dispatch(handleEditBody(body)),
-    submitPost: (post) => { handleSubmitPost(post)(dispatch) },
+    submitPost: (post) => { return handleSubmitPost(post)(dispatch) },
   }
 }
 

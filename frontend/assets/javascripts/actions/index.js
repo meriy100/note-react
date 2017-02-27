@@ -41,7 +41,7 @@ export const handleEditPath = (path) => {
 
 const updatePost = (post) => {
   return (dispatch) => {
-    axiosHelper.patch(`/api/posts/${post.id}`, 
+    return axiosHelper.patch(`/api/posts/${post.id}`, 
       { 
         post: {
         path: post.path,
@@ -58,7 +58,7 @@ const updatePost = (post) => {
 
 const createPost = (post) => {
   return (dispatch) => {
-    axiosHelper.post(`/api/posts/`,
+    return axiosHelper.post(`/api/posts/`,
     {
       post: {
         path: post.path,
