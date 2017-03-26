@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-    resources :posts, only: [:index, :show, :create, :update], defaults: { format: :json }
-    resources :tree_posts, only: [:index], defaults: { format: :json }
-    resources :templates, only: [:index], defaults: { format: :json }
+  namespace :api, defaults: { format: :json } do
+    resources :posts, only: [:index, :show, :create, :update]
+    namespace :posts do
+      resource :state, only: [:update]
+    end
+    resources :tree_posts, only: [:index]
+    resources :templates, only: [:index]
   end
 
   resources :user_sessions, only: [:new, :create, :destroy]

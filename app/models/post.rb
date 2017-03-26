@@ -12,6 +12,11 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  aasm_state      :string(255)
+#  state           :integer          default("0"), not null
+#
+# Indexes
+#
+#  index_posts_on_state  (state)
 #
 
 class Post < ApplicationRecord
@@ -19,6 +24,8 @@ class Post < ApplicationRecord
   belongs_to :updated_user, class_name: :User
 
   validates :path, uniqueness: true
+
+  enum state: { public: 0, archive: 10 }
 
   def self.tree
     root_tree = TreePost.new
