@@ -10,8 +10,13 @@ class PostList extends Component {
       path: PropTypes.string.isRequired
     }).isRequired).isRequired,
   }
+
+  componentDidMount () {
+    let queryPosts = this.props.queryPosts
+    queryPosts()
+  }
   render() {
-    let { posts, queryPosts, clickPathListItem } = this.props
+    let { posts, queryPosts, clickPathListItem, clickArchivePost } = this.props
     return(
       <div>
         <h1>Posts</h1>
@@ -20,6 +25,7 @@ class PostList extends Component {
             <PostListItem key={post.id}
               clickPathListItem={clickPathListItem}
               queryPosts={queryPosts}
+              clickArchivePost={clickArchivePost}
               {...post} />
           )}
         </ul>

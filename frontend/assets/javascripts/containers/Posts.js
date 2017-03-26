@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import axios from "axios";
 
-import { clickActionQueryPosts, handleClickTreePost } from '../actions'
+import { clickActionQueryPosts, handleClickTreePost, handleArchivePost } from '../actions'
 import PostList from '../components/PostList.jsx'
 
 
@@ -30,6 +30,9 @@ const mapDispatchToProps = (dispatch) => {
     queryPosts: (params) => queryPosts(dispatch, params),
     clickPathListItem: (id, path) => {
       dispatch(handleClickTreePost(id, path))
+    },
+    clickArchivePost: (id) => {
+      handleArchivePost(id)(dispatch)
     },
   }
 }

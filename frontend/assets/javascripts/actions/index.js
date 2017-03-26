@@ -41,13 +41,14 @@ export const handleEditPath = (path) => {
 
 const updatePost = (post) => {
   return (dispatch) => {
-    return axiosHelper.patch(`/api/posts/${post.id}`, 
-      { 
+    return axiosHelper.patch(`/api/posts/${post.id}`,
+      {
         post: {
-        path: post.path,
-        body: post.body,
-      } 
-    }).then((response) => {
+          path: post.path,
+          body: post.body,
+        }
+      }
+    ).then((response) => {
       post = response.data
       dispatch(axiosGetPost(post))
     }).catch((response) => {
@@ -56,6 +57,24 @@ const updatePost = (post) => {
   }
 }
 
+const archivePost = (id) => {
+  return { type: 'ARCHIVE_POST', payload: { id: id } }
+}
+
+export const handleArchivePost = (id) => {
+  return (dispatch) => {
+    return axiosHelper.patch(`/api/posts/${id}/state`, {
+      state: 'archive'
+    }).then((response) => {
+      console.log(response.data)
+      dispatch(archivePost(response.data.id))
+    }).catch((response) => {
+      console.log(response)
+    })
+  }
+}
+
+
 const createPost = (post) => {
   return (dispatch) => {
     return axiosHelper.post(`/api/posts/`,
@@ -63,7 +82,7 @@ const createPost = (post) => {
       post: {
         path: post.path,
         body: post.body,
-      } 
+      }
     }).then((response) => {
       post = response.data
       dispatch(axiosGetPost(post))
@@ -75,7 +94,7 @@ const createPost = (post) => {
 
 export const handleSubmitPost = (post) => {
   if(post.id) {
-    return updatePost(post)  
+    return updatePost(post)
   } else {
     return createPost(post)
   }

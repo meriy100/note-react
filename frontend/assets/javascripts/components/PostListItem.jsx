@@ -4,8 +4,15 @@ import PostPathList from './PostListItem/PostPathList.jsx'
 
 class PostListItem extends Component {
   static propTypes = { initialCount: React.PropTypes.number };
+
+  static get contextTypes() {
+    return {
+      router: React.PropTypes.object.isRequired
+    }
+  }
+
   render() {
-    let { id, path_list, name, created_user, clickPathListItem, queryPosts } = this.props
+    let { id, path_list, name, created_user, clickPathListItem, queryPosts, clickArchivePost } = this.props
     return(
       <li className="list-group-item post-list-item">
         <div className="post-list-item-inner">
@@ -23,6 +30,12 @@ class PostListItem extends Component {
             <div className="post-list-fotter">
               <div className="post-record">
                 <div className="post-autour">
+                  <button
+                    onClick={ (e) => clickArchivePost(id) }
+                    className="btn btn-danger btn-xs" >
+                    <i className="fa fa-archive" />
+                    Archive
+                  </button>
                   <span>Created by</span>
                   <Link to="/" className="authour-name-link">{created_user.name}</Link>
                 </div>
