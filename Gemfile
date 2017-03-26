@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 gem 'bourbon'
 gem 'font-awesome-rails'
+gem 'bootstrap_form'
 
 # Template
 gem "slim"
