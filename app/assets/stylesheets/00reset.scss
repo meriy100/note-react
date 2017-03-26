@@ -59,4 +59,7 @@ td.updated-at {
   font-size : 0.5em;
 }
 
-
+.field_with_errors {
+  @extend .form-group;
+  @extend .has-error;
+}
