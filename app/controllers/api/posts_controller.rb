@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.public.search(params).result
+    @posts = Post.pub.search(params).result
   end
 
   def show
@@ -8,7 +8,7 @@ class Api::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.public.new(post_params)
+    @post = Post.pub.new(post_params)
     @post.created_user = current_user
     @post.save!
     render :show
@@ -22,7 +22,7 @@ class Api::PostsController < ApplicationController
   private
 
   def find_post
-    @post ||= Post.public.find(params[:id])
+    @post ||= Post.pub.find(params[:id])
   end
 
   def post_params

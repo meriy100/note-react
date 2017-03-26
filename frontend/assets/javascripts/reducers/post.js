@@ -6,6 +6,7 @@ const postState = {
   body: "",
   summaries: [],
   user: {},
+  state: -1,
 }
 const post = (state = postState, action) => {
   switch (action.type) {

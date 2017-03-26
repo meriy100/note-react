@@ -25,7 +25,7 @@ class Post < ApplicationRecord
 
   validates :path, uniqueness: true
 
-  enum state: { public: 0, archive: 10 }
+  enum state: { pub: 0, archive: 10 }
 
   def self.tree
     root_tree = TreePost.new

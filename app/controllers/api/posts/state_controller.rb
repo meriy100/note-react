@@ -6,7 +6,7 @@ class Api::Posts::StateController < ApplicationController
   private
 
   def find_post
-    @post ||= Post.public.find(params[:id])
+    @post ||= Post.pub.find(params[:id])
   end
 
   def state_params
