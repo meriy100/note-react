@@ -1,10 +1,17 @@
 /*
  *
- *= require_tree .
- *= requrie pages/common.scss
- *= requrie components/post-list.scss
- *= requrie components/post.scss
  *= require codemirror.css
+ *= require 00reset.scss
+ *= require main.css
+ *= require settings/helpers/_base.scss
+ *= require settings/helpers/_margin.scss
+ *= require components/header.scss
+ *= require components/_sidebar.scss
+ *= require components/post-list.scss
+ *= require components/post.scss
+ *= require pages/post-view.scss
+ *= require pages/tree_list.scss
+ *= require pages/tree_list.scss
  *= require_self
  */
 
