@@ -1,6 +1,5 @@
 class Admin::UsersController < AdminController
-  skip_before_filter :require_login, only: [:index, :new, :create]
-  
+
   def index
   end
  
@@ -9,13 +8,11 @@ class Admin::UsersController < AdminController
   end
  
   def create
-    if user_params[:password] == params[:user][:password]
-      @user = User.new user_params 
-      if @user.save
-        redirect_to admin_users_url, notice: 'user created'
-      else
-        render :new
-      end
+    @user = User.new user_params 
+    if @user.save
+      redirect_to admin_users_url, notice: 'user created'
+    else
+      render :new
     end
   end
 
