@@ -1,5 +1,6 @@
 class TreePost
   include ActiveModel::Model
+  include ActiveModel::Serialization
   attr_accessor :id, :children, :name, :path, :post, :dipth, :parent
 
   def self.tree(posts)
@@ -16,6 +17,10 @@ class TreePost
     @children ||= []
     @path ||= ""
     @path.gsub!(/^\//, "")
+  end
+
+  def id
+    path.hash
   end
 
   def insert_post(paths, post)

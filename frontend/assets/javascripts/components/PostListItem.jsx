@@ -5,14 +5,14 @@ import PostPathList from './PostListItem/PostPathList.jsx'
 class PostListItem extends Component {
   static propTypes = { initialCount: React.PropTypes.number };
   render() {
-    let { id, pathList, name, createdUser, clickPathListItem, queryPosts } = this.props
+    let { id, path_list, name, created_user, clickPathListItem, queryPosts } = this.props
     return(
       <li className="list-group-item post-list-item">
         <div className="post-list-item-inner">
           <div className="post-list-item-right">
             <PostPathList clickPathListItem={clickPathListItem}
               queryPosts={queryPosts}
-              pathList={pathList}/>
+              path_list={path_list}/>
             <h2 className="post-title">
               <Link  to={`/posts/${id}`} className="post-title-link">{name}</Link>
               <Link to={`/posts/${id}/edit`} className="btn btn-primary">
@@ -24,7 +24,7 @@ class PostListItem extends Component {
               <div className="post-record">
                 <div className="post-autour">
                   <span>Created by</span>
-                  <Link to="/" className="authour-name-link">{createdUser.name}</Link>
+                  <Link to="/" className="authour-name-link">{created_user.name}</Link>
                 </div>
               </div>
             </div>

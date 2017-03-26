@@ -14,7 +14,7 @@ const treePost = (state = {}, action) => {
         })
       }
       return Object.assign({}, state, {
-        childVisible: !state.childVisible,
+        child_visible: !state.child_visible,
       })
     default:
       return state

@@ -12,7 +12,7 @@ class TreePost extends Component {
   }
 
   render() {
-    let { id, post, name, children, dipth, visible, path, childVisible, clickTreePost, queryPosts } = this.props
+    let { id, post, name, children, dipth, visible, path, child_visible, clickTreePost, queryPosts } = this.props
     let styles = {paddingLeft: (dipth*10 + 15)}
     return (
       <div style={visible ? {display: "block"} : {display: "none"} }>
@@ -32,7 +32,7 @@ class TreePost extends Component {
         {children.map(child =>
           <TreePost key={child.id}
             clickTreePost={clickTreePost}
-            visible={childVisible}
+            visible={child_visible}
             queryPosts={queryPosts}
             {...child} />
         )}

@@ -18,6 +18,7 @@ gem 'bootstrap_form'
 
 # Template
 gem "slim"
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Configuration
 gem 'dotenv-rails'

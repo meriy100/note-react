@@ -1,22 +1,24 @@
 class Api::PostsController < ApplicationController
   def index
     @posts = Post.pub.search(params).result
+    render json: @posts, each_serializer: PostSerializer
   end
 
   def show
     find_post
+    render json: @post
   end
 
   def create
     @post = Post.pub.new(post_params)
     @post.created_user = current_user
     @post.save!
-    render :show
+    render json: @post
   end
 
   def update
     find_post.update!(post_params)
-    render :show
+    render json: @post
   end
 
   private

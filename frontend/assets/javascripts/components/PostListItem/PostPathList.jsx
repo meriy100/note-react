@@ -2,10 +2,10 @@ import React, { PropTypes, Component } from 'react'
 
 class PostPathList extends Component {
   render() {
-    let {pathList, clickPathListItem, queryPosts} = this.props
+    let {path_list, clickPathListItem, queryPosts} = this.props
     return(
       <div className="path-list">
-        {pathList.map(pathListItem =>
+        {path_list.map(pathListItem =>
           <a className="path-list-link" key={pathListItem.id}
             onClick={()=>{
               clickPathListItem(pathListItem.id, pathListItem.path)

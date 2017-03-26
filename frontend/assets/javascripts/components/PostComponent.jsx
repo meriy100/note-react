@@ -16,7 +16,7 @@ class PostComponent extends Component {
           <div className="post-header-left">
             <div className="post-path-list">
               <div className="path-list">
-                {post.pathList.map(pathListItem =>
+                {post.path_list.map(pathListItem =>
                   <a className="path-list-link" key={pathListItem.id}>
                     <span className="name">{pathListItem.name}</span><span className="slash">/</span>
                   </a>

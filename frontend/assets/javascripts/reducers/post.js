@@ -1,6 +1,6 @@
 const postState = {
   id: null,
-  pathList: [],
+  path_list: [],
   name: "",
   path: "",
   body: "",
