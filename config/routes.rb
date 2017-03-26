@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'dashboard#index'
-    resources :users, only:[:index, :new, :create]   
+    resources :users, only:[:index, :new, :create]
   end
 
   get "/(*all)", to: "front#index"

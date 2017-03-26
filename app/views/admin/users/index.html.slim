@@ -1,1 +1,12 @@
+= link_to '新規ユーザー', new_admin_user_path, class: 'btn btn-primary'
+table.table
+  tr
+    th Name
+    th Role
 
+  - @users.each do |user|
+    tr
+      td
+        = user.name
+      td
+        = user.admin? ? '管理者' : '一般'
