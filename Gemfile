@@ -93,8 +93,10 @@ end
 
 group :production do
   # Application server
-  gem "unicorn"
-  gem 'therubyracer', platforms: :ruby
+  # gem "unicorn"
+  # gem 'therubyracer', platforms: :ruby
+  gem "pg"
+  gem "rails_12factor"
 end
 
 group :test do
