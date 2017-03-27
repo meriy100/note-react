@@ -84,6 +84,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
+  gem 'redis'
   # Dummy Data
   gem "faker"
 end
