@@ -20,7 +20,12 @@ const playRoom = (videoId) => {
       }
 
       function onPlayerStateChange(event) {
-          console.log('Player State Changed: ', event);
+        console.log('Player State Changed: ', event);
+        if(event.data == YT.PlayerState.ENDED) {
+          console.log('ok')
+          console.log(YT)
+          youtubePlayer.loadVideoById('kJkdoY_qPgg')
+        }
       }
   });
 }

@@ -20,14 +20,18 @@ import PostEditorMaster from './components/PostEditorMaster.jsx'
 
 import playRoom from './lib/play_room'
 
+import axiosHelper from './lib/axiosHelper'
+
 let store = createStore(note,
   applyMiddleware(createLogger())
 )
 
 
 if(document.URL.match('/play_room')) {
-  let videoId = 'M7lc1UVf-VE'
-  playRoom(videoId)
+  axiosHelper.get('/api/playlist').then((response) => {
+    console.log(response)
+    playRoom(response.data.video_id)
+  })
 } else {
   render(
     <Provider store={store}>
