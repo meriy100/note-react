@@ -1,6 +1,20 @@
-= link_to "host", root_path
+.row
+  .col-md-6
+    = bootstrap_form_for @search_video_form, url: music_player_path, method: :get do |f|
+      = f.text_field :title
+      = f.submit
 
-div.messages
-button.btn.btn-primary
+    ul.list-group
+      - @search_video_form.videos.each do |video|
+        li.list-group-item
+          = image_tag video['snippet']['thumbnails']['default']['url']
+          span = video['snippet']['title']
+          = button_tag 'プレイリストに追加', class: 'send-playlist btn btn-primary', data: { video_id: video['id']['videoId'], url: video['snippet']['thumbnails']['default']['url'], title: video['snippet']['title'] }
+
+
+  .col-md-6
+    h2 プレイリスト
+    ul.list-group#playlist
+
 
 

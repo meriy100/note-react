@@ -8,6 +8,12 @@ class MusicChannel < ApplicationCable::Channel
   end
 
   def broadcast(data)
-    ActionCable.server.broadcast 'host_channel', data
+    html = "
+    <li class='list-group-item' data-video-id=#{data['message']['videoId']}>
+      <img src=#{data['message']['url']} />
+      span#{data['message']['title']}
+    </li>
+    "
+    ActionCable.server.broadcast 'host_channel', html
   end
 end

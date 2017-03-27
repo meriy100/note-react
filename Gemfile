@@ -38,6 +38,10 @@ gem "ransack"
 
 gem "sorcery"
 
+# api
+gem 'google-api-client', '<0.9'
+gem 'trollop', '~> 2.1'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 
