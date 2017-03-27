@@ -7,7 +7,7 @@ class MusicChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def hoge(data) 
+  def broadcast(data)
     ActionCable.server.broadcast 'host_channel', data
   end
 end
