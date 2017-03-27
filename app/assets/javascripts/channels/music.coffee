@@ -12,8 +12,8 @@ App.music = App.cable.subscriptions.create "MusicChannel",
     @perform 'hoge', message: message
 
 $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
-  if event.keyCode is 13 
-    App.music.hoge event.target.value 
+  if event.keyCode is 13
+    App.music.hoge event.target.value
     event.target.value = ''
     event.preventDefault()
 
