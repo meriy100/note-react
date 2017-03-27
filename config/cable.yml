@@ -7,4 +7,3 @@ test:
 production:
   adapter: redis
   url: ENV['HEROKU_REDIS_ENDPOINT']
-  config.web_socket_server_url: wss://note-sw.herokuapp.com/play_room
