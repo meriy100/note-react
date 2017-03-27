@@ -1,4 +1,5 @@
-= link_to "host", root_path 
+- if current_user.host? 
+  div#sample
 
 div.messages
 button.btn.btn-primary

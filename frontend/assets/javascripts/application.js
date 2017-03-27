@@ -18,25 +18,29 @@ import Sidebar from "./components/Sidebar.jsx"
 import Post from "./containers/Post"
 import PostEditorMaster from './components/PostEditorMaster.jsx'
 
+import playRoom from './lib/play_room'
+
 let store = createStore(note,
   applyMiddleware(createLogger())
 )
 
-render(
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <Route path="/posts" component={Posts}></Route>
-        <Route path="/posts/new" component={PostEditorMaster}></Route>
-        <Route path="/posts/:id" component={Post}></Route>
-        <Route path="/posts/:id/edit" component={PostEditorMaster}></Route>
-      </Route>
-      <Route path="*" component={App}/>
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-)
 
 if(document.URL.match('/play_room')) {
-
+  let videoId = 'M7lc1UVf-VE'
+  playRoom(videoId)
+} else {
+  render(
+    <Provider store={store}>
+      <Router history={browserHistory}>
+        <Route path="/" component={App}>
+          <Route path="/posts" component={Posts}></Route>
+          <Route path="/posts/new" component={PostEditorMaster}></Route>
+          <Route path="/posts/:id" component={Post}></Route>
+          <Route path="/posts/:id/edit" component={PostEditorMaster}></Route>
+        </Route>
+        <Route path="*" component={App}/>
+      </Router>
+    </Provider>,
+    document.getElementById('root')
+  )
 }
