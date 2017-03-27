@@ -1,3 +1,4 @@
+const Dotenv = require('dotenv-webpack');
 module.exports = {
   devtool: 'inline-source-map',
   entry: {
@@ -7,6 +8,15 @@ module.exports = {
     path: './app/assets/javascripts',
     filename: '[name].bundle.js'
   },
+  node: {
+    fs: 'empty'
+  },
+  plugins: [
+    new Dotenv({
+      path: './.env',
+      safe: false
+    })
+  ],
   module: {
     loaders: [
       {
