@@ -15,6 +15,10 @@
   .col-md-6
     h2 プレイリスト
     ul.list-group#playlist
+      - Playlist.all.each do |playlist_item|
+        li.list-group-item[data-video-id="#{playlist_item.video_id}"]
+          = image_tag playlist_item.url
+          span = playlist_item.title
 
 
 

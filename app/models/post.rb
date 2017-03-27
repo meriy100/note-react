@@ -12,7 +12,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  aasm_state      :string(255)
-#  state           :integer          default("0"), not null
+#  state           :string(255)      default("pub"), not null
 #
 # Indexes
 #
