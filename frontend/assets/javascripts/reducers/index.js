@@ -2,6 +2,8 @@ import { combineReducers } from 'redux'
 
 import posts from './posts'
 import post from './post'
+import playlist from './playlist'
+import searchVideos from './searchVideos'
 
 const treePost = (state = {}, action) => {
   switch(action.type) {
@@ -43,6 +45,6 @@ const postsPath = (state = "/", action) => {
   }
 }
 
-const note = combineReducers({posts, post, treePosts, postsPath})
+const note = combineReducers({posts, post, treePosts, postsPath, playlist, searchVideos})
 
 export default note
