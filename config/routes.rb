@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     end
     resources :tree_posts, only: [:index]
     resources :templates, only: [:index]
+    resource :playlist, controller: 'playlist', only: [:show, :destroy]
   end
 
   resources :user_sessions, only: [:new, :create, :destroy]
@@ -13,8 +14,7 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
   get 'logout' => 'user_sessions#destroy'
-  get 'play_room' => 'music_player#index'
-
+  get 'play_room', to: 'music_player#index', as: :music_player
 
   namespace :admin do
     get '/' => 'dashboard#index'

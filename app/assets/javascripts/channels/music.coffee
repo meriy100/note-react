@@ -6,12 +6,14 @@ App.music = App.cable.subscriptions.create "MusicChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('.messages').append data['message']
+    $('#playlist').append data
 
   add_videos: (message) ->
-    @perform 'broadcast', message: "TestMessage"
+    @perform 'broadcast', message: message
 
-$('.btn').click ->
-  App.music.add_videos "TestMessage"
+$(document).on 'click', '.send-playlist', ->
+  console.log($(this).data('videoId'))
+  App.music.add_videos($(this).data())
   event.target.value = ''
   event.preventDefault()
+

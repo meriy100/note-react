@@ -5,7 +5,6 @@
 #  id               :integer          not null, primary key
 #  name             :string(255)
 #  email            :string(255)      not null
-#  host             :boolean          default("0"), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  crypted_password :string(255)

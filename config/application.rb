@@ -14,5 +14,6 @@ Bundler.require(*Rails.groups)
 
 module Note
   class Application < Rails::Application
+    config.autoload_paths += %W[#{config.root}/app/forms]
   end
 end
