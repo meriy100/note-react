@@ -8,12 +8,10 @@ App.music = App.cable.subscriptions.create "MusicChannel",
   received: (data) ->
     $('.messages').append data['message']
 
-  hoge: (message) ->
-    @perform 'hoge', message: message
+  add_videos: (message) ->
+    @perform 'broadcast', message: "TestMessage"
 
-$(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
-  if event.keyCode is 13 
-    App.music.hoge event.target.value 
-    event.target.value = ''
-    event.preventDefault()
-
+$('.btn').click ->
+  App.music.add_videos "TestMessage"
+  event.target.value = ''
+  event.preventDefault()
