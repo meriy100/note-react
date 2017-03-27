@@ -37,6 +37,6 @@ render(
   document.getElementById('root')
 )
 
-if(document.URL.match('/play-room')) {
+if(document.URL.match('/play_room')) {
 
 }

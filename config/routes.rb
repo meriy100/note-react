@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
   get 'logout' => 'user_sessions#destroy'
-  get 'play-room' => 'music_player#index'
+  get 'play_room' => 'music_player#index'
 
 
   namespace :admin do
