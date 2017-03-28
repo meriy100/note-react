@@ -36,6 +36,7 @@ class PlayRoomComponent extends Component {
             <li key={searchVideo.id.videoId}
               className='list-group-item'>
               <img src={searchVideo.snippet.thumbnails.default.url} />
+              <span>searchVideo.snippet.title</span>
             </li>
           )}
         </ul>

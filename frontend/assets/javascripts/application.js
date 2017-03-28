@@ -27,16 +27,6 @@ let store = createStore(note,
 )
 
 
-if(document.URL.match('/play_room')) {
-  let videoId = 'uENs--mlvsI'
-  axiosHelper.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${process.env.YOUTUBE_KEY}&part=snippet`).then((response) => {
-    console.log(response)
-  })
-  axiosHelper.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=jaz&key=${process.env.YOUTUBE_KEY}`).then((response)=> {
-    console.log(response)
-  })
-}
-
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
