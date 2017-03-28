@@ -6,4 +6,4 @@ test:
 
 production:
   adapter: redis
-  url: ENV['HEROKU_REDIS_ENDPOINT']
+  url: <%= ENV['HEROKU_REDIS_ENDPOINT'] %>
