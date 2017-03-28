@@ -23,9 +23,14 @@ import playRoom from './lib/play_room'
 
 import axiosHelper from './lib/axiosHelper'
 
+import ActionCable from 'actioncable'
+
+// import cablecar from 'redux-cablecar';
+
 let store = createStore(note,
   applyMiddleware(createLogger())
 )
+// cablecar.connect(store, 'MusicChannel', { room: 'host_channel' })
 
 
 if(document.URL.match('/play_room')) {
@@ -33,20 +38,19 @@ if(document.URL.match('/play_room')) {
     console.log(response)
     playRoom(response.data.video_id)
   })
-} else {
-  render(
-    <Provider store={store}>
-      <Router history={browserHistory}>
-        <Route path="/" component={App}>
-          <Route path="/posts" component={Posts}></Route>
-          <Route path="/posts/new" component={PostEditorMaster}></Route>
-          <Route path="/posts/:id" component={Post}></Route>
-          <Route path="/posts/:id/edit" component={PostEditorMaster}></Route>
-          <Route path="/play_room" component={PlayRoom}></Route>
-        </Route>
-        <Route path="*" component={App}/>
-      </Router>
-    </Provider>,
-    document.getElementById('root')
-  )
 }
+render(
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <Route path="/posts" component={Posts}></Route>
+        <Route path="/posts/new" component={PostEditorMaster}></Route>
+        <Route path="/posts/:id" component={Post}></Route>
+        <Route path="/posts/:id/edit" component={PostEditorMaster}></Route>
+        <Route path="/play_room" component={PlayRoom}></Route>
+      </Route>
+      <Route path="*" component={App}/>
+    </Router>
+  </Provider>,
+  document.getElementById('root')
+)
