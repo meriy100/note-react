@@ -18,25 +18,33 @@ import Sidebar from "./components/Sidebar.jsx"
 import Post from "./containers/Post"
 import PostEditorMaster from './components/PostEditorMaster.jsx'
 
+import playRoom from './lib/play_room'
+
+import axiosHelper from './lib/axiosHelper'
+
 let store = createStore(note,
   applyMiddleware(createLogger())
 )
 
-render(
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <Route path="/posts" component={Posts}></Route>
-        <Route path="/posts/new" component={PostEditorMaster}></Route>
-        <Route path="/posts/:id" component={Post}></Route>
-        <Route path="/posts/:id/edit" component={PostEditorMaster}></Route>
-      </Route>
-      <Route path="*" component={App}/>
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-)
 
 if(document.URL.match('/play_room')) {
-
+  axiosHelper.get('/api/playlist').then((response) => {
+    console.log(response)
+    playRoom(response.data.video_id)
+  })
+} else {
+  render(
+    <Provider store={store}>
+      <Router history={browserHistory}>
+        <Route path="/" component={App}>
+          <Route path="/posts" component={Posts}></Route>
+          <Route path="/posts/new" component={PostEditorMaster}></Route>
+          <Route path="/posts/:id" component={Post}></Route>
+          <Route path="/posts/:id/edit" component={PostEditorMaster}></Route>
+        </Route>
+        <Route path="*" component={App}/>
+      </Router>
+    </Provider>,
+    document.getElementById('root')
+  )
 }
