@@ -11,5 +11,5 @@
 #  updated_at :datetime         not null
 #
 
-class Playlist < ApplicationRecord
+class PlaylistItem < ApplicationRecord
 end

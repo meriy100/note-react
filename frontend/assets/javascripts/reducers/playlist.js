@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 
 const playlist = (state=[], action) => {
   switch(action.type) {
-    case 'ADD_PLAYLIST':
+    case 'ADD_PLAYLIST_ITEM':
       return [
         ...state,
         action.payload
@@ -10,7 +10,7 @@ const playlist = (state=[], action) => {
     case 'QUERY_PLAYLIST':
       return action.payload
     case 'REMOVE_PLAYLIST':
-      return state.filter((video, _) => video.videoId !== action.playload.video_id)
+      return state.filter((playlist_item, _) => playlist_item.video_id !== action.playload.video_id)
     default:
       return state
   }

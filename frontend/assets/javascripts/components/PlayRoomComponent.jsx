@@ -15,8 +15,9 @@ class PlayRoomComponent extends Component {
   }
 
   componentDidMount () {
-    let { submitQuerySearchVideos, clickAddPlayList } = this.props
+    let { submitQuerySearchVideos, clickAddPlayList, queryPlaylist } = this.props
     submitQuerySearchVideos('jaz')
+    queryPlaylist()
 
     let CableApp = {}
     CableApp.cable = ActionCable.createConsumer("ws://localhost:3000/cable")
@@ -35,7 +36,7 @@ class PlayRoomComponent extends Component {
           url: searchVideo.snippet.thumbnails.default.url,
           title: searchVideo.snippet.title,
         }
-        this.perform('add_video', {message})
+        this.perform('add_playlist_item', {message})
       }
     })
     this.setState({ CableApp: CableApp })
@@ -75,7 +76,7 @@ class PlayRoomComponent extends Component {
           <div className='col-md-6'>
             <ul className="list-group">
               {playlist.map(video =>
-                <li key={video.videoId}
+                <li key={video.video_id}
                   className='list-group-item'>
                   <img src={video.url} />
                   <span>{video.title}</span>

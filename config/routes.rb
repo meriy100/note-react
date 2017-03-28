@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
     resources :tree_posts, only: [:index]
     resources :templates, only: [:index]
-    resources :playlist, controller: 'playlist', only: [:show, :destroy]
+    resources :playlist_items
   end
 
   resources :user_sessions, only: [:new, :create, :destroy]

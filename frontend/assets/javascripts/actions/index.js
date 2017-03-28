@@ -66,7 +66,6 @@ export const handleArchivePost = (id) => {
     return axiosHelper.patch(`/api/posts/${id}/state`, {
       state: 'archive'
     }).then((response) => {
-      console.log(response.data)
       dispatch(archivePost(response.data.id))
     }).catch((response) => {
       console.log(response)
