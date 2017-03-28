@@ -15,25 +15,27 @@ class PlayRoomComponent extends Component {
   }
 
   componentDidMount () {
-    let { submitQuerySearchVideos } = this.props
+    let { submitQuerySearchVideos, clickAddPlayList } = this.props
     submitQuerySearchVideos('jaz')
 
     let CableApp = {}
     CableApp.cable = ActionCable.createConsumer("ws://localhost:3000/cable")
     CableApp.MusicChannel = CableApp.cable.subscriptions.create("MusicChannel", {
       connected:  function() {
-        // Called when the subscription is ready for use on the server
-        this.perform('broadcast', {message: "" })
       },
       disconnected: function() {
       },
       received: function(data) {
-        console.log(data)
+        clickAddPlayList(data)
         return data
       },
-      add_videos: function(message) {
-        console.log('ok')
-        this.perform('broadcast', {message: message})
+      add_videos: function(searchVideo) {
+        let message =  {
+          videoId: searchVideo.id.videoId,
+          url: searchVideo.snippet.thumbnails.default.url,
+          title: searchVideo.snippet.title,
+        }
+        this.perform('add_video', {message})
       }
     })
     this.setState({ CableApp: CableApp })
@@ -45,7 +47,7 @@ class PlayRoomComponent extends Component {
   }
 
   render() {
-    let { searchVideos, submitQuerySearchVideos } = this.props
+    let { searchVideos, playlist, submitQuerySearchVideos } = this.props
     return(
       <div>
         <h1>PlayRoom</h1>
@@ -61,10 +63,22 @@ class PlayRoomComponent extends Component {
                 <li key={searchVideo.id.videoId}
                   className='list-group-item'>
                   <img src={searchVideo.snippet.thumbnails.default.url} />
-                  <span>searchVideo.snippet.title</span>
+                  <span>{searchVideo.snippet.title}</span>
                   <button className='btn btn-primary send-playlist' onClick={()=>
-                    this.state.CableApp.MusicChannel.add_videos({ videoId: '', url: 'http://example.com', title: 'test' })
+                    this.state.CableApp.MusicChannel.add_videos(searchVideo)
                   } >プレイリストに追加</button>
+                </li>
+              )}
+            </ul>
+          </div>
+
+          <div className='col-md-6'>
+            <ul className="list-group">
+              {playlist.map(video =>
+                <li key={video.videoId}
+                  className='list-group-item'>
+                  <img src={video.url} />
+                  <span>{video.title}</span>
                 </li>
               )}
             </ul>

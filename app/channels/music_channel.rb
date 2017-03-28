@@ -7,15 +7,9 @@ class MusicChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def broadcast(data)
+  def add_video(data)
     Playlist.create!(playlist_params(data['message']))
-    html = "
-    <li class='list-group-item' data-video-id=#{data['message']['videoId']}>
-      <img src=#{data['message']['url']} />
-      span#{data['message']['title']}
-    </li>
-    "
-    ActionCable.server.broadcast 'host_channel', html
+    ActionCable.server.broadcast 'host_channel', data['message']
   end
 
   private

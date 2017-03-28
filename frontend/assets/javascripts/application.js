@@ -23,14 +23,10 @@ import playRoom from './lib/play_room'
 
 import axiosHelper from './lib/axiosHelper'
 
-import ActionCable from 'actioncable'
-
-// import cablecar from 'redux-cablecar';
 
 let store = createStore(note,
   applyMiddleware(createLogger())
 )
-// cablecar.connect(store, 'MusicChannel', { room: 'host_channel' })
 
 
 if(document.URL.match('/play_room')) {
