@@ -12,7 +12,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  aasm_state      :string(255)
-#  state           :integer          default("0"), not null
+#  state           :string(255)      default("pub"), not null
 #
 # Indexes
 #
@@ -25,7 +25,7 @@ class Post < ApplicationRecord
 
   validates :path, uniqueness: true
 
-  enum state: { pub: 0, archive: 10 }
+  enum state: { pub: 'pub', archive: 'archive' }
 
   def self.tree
     root_tree = TreePost.new

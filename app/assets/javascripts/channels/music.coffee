@@ -6,14 +6,14 @@ App.music = App.cable.subscriptions.create "MusicChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('.messages').append data['message']
+    $('#playlist').append data
 
-  hoge: (message) ->
-    @perform 'hoge', message: message
+  add_videos: (message) ->
+    @perform 'broadcast', message: message
 
-$(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
-  if event.keyCode is 13 
-    App.music.hoge event.target.value 
-    event.target.value = ''
-    event.preventDefault()
+$(document).on 'click', '.send-playlist', ->
+  console.log($(this).data('videoId'))
+  App.music.add_videos($(this).data())
+  event.target.value = ''
+  event.preventDefault()
 

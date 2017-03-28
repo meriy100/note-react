@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326135855) do
+ActiveRecord::Schema.define(version: 20170327083512) do
+
+  create_table "playlists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "order"
+    t.string   "video_id"
+    t.string   "url"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "post_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "post_id"
@@ -30,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170326135855) do
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
     t.string   "aasm_state"
-    t.integer  "state",                         default: 0,     null: false
+    t.string   "state",                         default: "pub", null: false
     t.index ["state"], name: "index_posts_on_state", using: :btree
   end
 
@@ -56,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170326135855) do
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email",                            null: false
+    t.boolean  "host",             default: false, null: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "crypted_password"
