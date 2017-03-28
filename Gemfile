@@ -104,6 +104,7 @@ group :production do
   # gem 'therubyracer', platforms: :ruby
   gem "pg"
   gem "rails_12factor"
+  gem 'virtus'
 end
 
 group :test do
