@@ -8,6 +8,7 @@ class SearchVideoForm
   attr_reader :videos
 
   def initialize(args = {})
+    args ||={}
     @title = args[:title] || ''
     @videos ||= []
   end
