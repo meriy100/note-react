@@ -7,14 +7,15 @@ class SearchVideoForm
   attr_accessor :title
   attr_reader :videos
 
-  def initialize(args)
-    super
+  def initialize(args = {})
+    @title = args[:title] || ''
     @videos ||= []
   end
 
   def persisted?
     false
   end
+
   DEVELOPER_KEY = ENV['YOUTUBE_KEY']
   YOUTUBE_API_SERVICE_NAME = 'youtube'
   YOUTUBE_API_VERSION = 'v3'
