@@ -1,10 +1,8 @@
 require 'google/api_client'
 
 class SearchVideoForm
-  include Virtus.model
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
-  include ActiveModel::Validations
+  include ::Virtus.model
+  include ActiveModel::Model
 
   attr_accessor :title
   attr_reader :videos
