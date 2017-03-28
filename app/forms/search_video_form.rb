@@ -33,10 +33,22 @@ class SearchVideoForm
     @videos = client.execute!(
       api_method: youtube.search.list,
       parameters: {
+        type: 'video',
         part: 'snippet',
         q: title ,#上記の検索ワードを変換する
         maxResults: 10#上記の取得数を変換する
       }
     ).data.items
+  end
+
+  def get_search_list(client, youtube)
+    client.execute!(
+      api_method: youtube.search.list,
+      parameters: {
+        part: 'snippet',
+        q: title ,#上記の検索ワードを変換する
+        maxResults: 10#上記の取得数を変換する
+      }
+    )
   end
 end
