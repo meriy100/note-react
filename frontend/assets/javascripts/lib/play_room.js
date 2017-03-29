@@ -1,9 +1,8 @@
 import axiosHelper from './axiosHelper'
 var youtube = require('youtube-iframe-player');
-
 const playRoom = (videoId) => {
   youtube.init(function() {
-    console.log('API Loaded');
+    console.log('Youtube API Loaded');
 
     var youtubePlayer = youtube.createPlayer('sample', {
         width: '720',
@@ -21,10 +20,8 @@ const playRoom = (videoId) => {
       }
 
       function onPlayerStateChange(event) {
-        console.log('Player State Changed: ', event);
         if(event.data == YT.PlayerState.ENDED) {
           axiosHelper.delete('/api/playlist').then((response) => {
-            console.log(response.data)
             youtubePlayer.loadVideoById(response.data.video_id)
           })
         }

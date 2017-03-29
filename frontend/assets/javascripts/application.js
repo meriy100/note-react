@@ -30,10 +30,10 @@ let store = createStore(note,
 
 
 if(document.URL.match('/play_room')) {
-  axiosHelper.get('/api/playlist').then((response) => {
-    console.log(response)
-    playRoom(response.data.video_id)
-  })
+  // axiosHelper.get('/api/playlist').then((response) => {
+  //   console.log(response)
+  //   playRoom(response.data.video_id)
+  // })
 }
 render(
   <Provider store={store}>

@@ -17,3 +17,7 @@ export const handleQueryPlaylist = () => {
     })
   }
 }
+
+export const handleRemovePlaylist = (playlist_item) => {
+  return { type: 'REMOVE_PLAYLIST', payload: playlist_item }
+}

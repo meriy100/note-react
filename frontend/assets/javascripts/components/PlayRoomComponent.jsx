@@ -1,21 +1,55 @@
 import React, { PropTypes, Component } from 'react'
 import { Link } from 'react-router'
 import ActionCable from 'actioncable'
+// import playRoom from '../lib/play_room'
+var youtube = require('youtube-iframe-player');
 
 class PlayRoomComponent extends Component {
   static propTypes = {
+  }
+
+  playRoom(component, videoId) {
+    youtube.init(() => {
+      console.log('Youtube API Loaded on Component');
+
+      var youtubePlayer = youtube.createPlayer('sample', {
+          width: '720',
+          height: '405',
+          videoId: videoId,
+          playerVars: { 'autoplay': 0, 'controls': 1 },
+          events: {
+            'onReady': playerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+
+      function playerReady(event) {
+          youtubePlayer.playVideo();
+      }
+
+      function onPlayerStateChange(event) {
+        let playlist = component.props.playlist
+        if(event.data === YT.PlayerState.ENDED) {
+          if(playlist.length > 1) {
+            youtubePlayer.loadVideoById(playlist[1].video_id)
+            component.state.CableApp.MusicChannel.nextPlaylist(playlist[0])
+          }
+        }
+      }
+    });
   }
 
   constructor(props) {
     super(props);
     this.state = {
       q: '',
+      playing: false,
       CableApp: {}
     };
   }
 
   componentDidMount () {
-    let { submitQuerySearchVideos, clickAddPlayList, queryPlaylist } = this.props
+    let { submitQuerySearchVideos, clickAddPlayList, queryPlaylist, removePlaylist } = this.props
     submitQuerySearchVideos('jaz')
     queryPlaylist()
 
@@ -27,8 +61,16 @@ class PlayRoomComponent extends Component {
       disconnected: function() {
       },
       received: function(data) {
-        clickAddPlayList(data)
-        return data
+        switch (data.type) {
+          case 'ADD_PLAYLIST_ITEM':
+            clickAddPlayList(data.payload)
+            return
+          case 'DELETE_PLAYLIST_ITEM':
+            removePlaylist(data.payload)
+            return
+          default:
+            return
+        }
       },
       add_videos: function(searchVideo) {
         let message =  {
@@ -37,9 +79,19 @@ class PlayRoomComponent extends Component {
           title: searchVideo.snippet.title,
         }
         this.perform('add_playlist_item', {message})
+      },
+      nextPlaylist: function(playlist_item) {
+        this.perform('next_playlist', {playlist_item})
       }
     })
     this.setState({ CableApp: CableApp })
+  }
+
+  componentDidUpdate() {
+    if(this.props.playlist.length !== 0 && !this.state.playing) {
+      this.playRoom(this, this.props.playlist[0].video_id)
+      this.setState({playing: true})
+    }
   }
 
 
@@ -52,6 +104,8 @@ class PlayRoomComponent extends Component {
     return(
       <div>
         <h1>PlayRoom</h1>
+        <div id="sample">
+        </div>
         <div className='row'>
           <div className='col-md-6'>
             <div className='form-group'>
