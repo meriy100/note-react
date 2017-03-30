@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import CodeMirror from 'react-codemirror'
-import { Link } from 'react-router' 
+import { Link } from 'react-router'
 require('codemirror/mode/markdown/markdown')
 
 class PostEditorComponent extends Component {
@@ -9,13 +9,13 @@ class PostEditorComponent extends Component {
     this.state = {
       submited: false,
     };
-  }  
+  }
   componentDidMount() {
-    let { params, getPost, setNewPost, post } = this.props
+    let { params, currentPathList, getPost, setNewPost, post } = this.props
     if(params.id) {
       getPost(params.id)
-    } else {
-      setNewPost()
+    } else if (currentPathList.length > 0) {
+      setNewPost(currentPathList[currentPathList.length - 1].path)
     }
   }
 

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: playlists
+# Table name: playlist_items
 #
 #  id         :integer          not null, primary key
 #  order      :integer
@@ -9,6 +9,8 @@
 #  title      :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  duration   :datetime
+#  type       :string(255)
 #
 
 require 'rails_helper'

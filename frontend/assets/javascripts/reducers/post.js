@@ -23,7 +23,9 @@ const post = (state = postState, action) => {
         name: splitPath[splitPath.length - 1]
       })
     case "SET_NEW_POST":
-      return postState
+      return Object.assign({}, postState, {
+        path: action.payload.path
+      })
     default:
       return state
   }

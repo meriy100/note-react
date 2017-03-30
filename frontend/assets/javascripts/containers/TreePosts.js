@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-import { clickActionQueryPosts, handleQueryTreePosts, handleClickTreePost } from '../actions'
+import { handleQueryTreePosts, handleClickTreePost } from '../actions'
+import { handleQueryPosts } from '../actions/posts'
 import TreePostList from '../components/TreePostList'
 
 const mapStateToProps = (state) => {
   return {
     treePosts: state.treePosts,
-    postsPath: state.postsPath
+    currentPathList: state.currentPathList
   }
 }
 
@@ -24,22 +25,10 @@ const queryTreePosts = (dispatch) => {
   })
 }
 
-const queryPosts = (dispatch, params = {}) => {
-  let posts = [];
-  axios.get(`/api/posts`, {params: params}).then((response) => {
-    posts = response.data
-  }).catch((response) => {
-     console.log(response)
-    posts = []
-  }).then(() => {
-    dispatch(clickActionQueryPosts(posts))
-  })
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     queryTreePosts: queryTreePosts(dispatch),
-    queryPosts: (params) => queryPosts(dispatch, params),
+    queryPosts: (params) => { handleQueryPosts(params)(dispatch) },
     clickTreePost: (id, path) => {
       dispatch(handleClickTreePost(id, path))
     },

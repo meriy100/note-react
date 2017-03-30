@@ -8,16 +8,27 @@ class PostComponent extends Component {
     getPost(params.id)
   }
 
+  static get contextTypes() {
+    return {
+      router: React.PropTypes.object.isRequired
+    }
+  }
+
   render() {
-    let { post } = this.props
+    let { post, clickPathListItem, queryPosts } = this.props
     return (
       <div className="post-component">
         <div className="post-header">
           <div className="post-header-left">
             <div className="post-path-list">
               <div className="path-list">
-                {post.path_list.map(pathListItem =>
-                  <a className="path-list-link" key={pathListItem.id}>
+                {post.path_list.map((pathListItem, idx) =>
+                  <a className="path-list-link" key={pathListItem.id}
+                      onClick={()=>{
+                        clickPathListItem(pathListItem.id, post.path_list.slice(0, idx + 1))
+                        queryPosts({ path_start: pathListItem.path })
+                        this.context.router.push('/')
+                        }}>
                     <span className="name">{pathListItem.name}</span><span className="slash">/</span>
                   </a>
                 )}
