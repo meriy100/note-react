@@ -7,13 +7,14 @@ import PostEditorComponent from '../components/PostEditorComponent.jsx'
 const mapStateToProps = (state) => {
   return {
     post: state.post,
+    currentPathList: state.currentPathList
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getPost: (id) => { handleGetPost(id)(dispatch) },
-    setNewPost: () => dispatch(setNewPost()),
+    setNewPost: (path) => dispatch(setNewPost(path)),
     editPath: (path) => dispatch(handleEditPath(path)),
     editBody: (body) => dispatch(handleEditBody(body)),
     submitPost: (post) => { return handleSubmitPost(post)(dispatch) },

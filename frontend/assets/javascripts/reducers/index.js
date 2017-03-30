@@ -36,15 +36,15 @@ const treePosts = (state = [], action) => {
   }
 }
 
-const postsPath = (state = "/", action) => {
+const currentPathList = (state = [], action) => {
   switch(action.type) {
     case "CLICK_TREE_POST":
-      return action.payload.path
+      return action.payload.path_list
     default:
       return state
   }
 }
 
-const note = combineReducers({posts, post, treePosts, postsPath, playlist, searchVideos})
+const note = combineReducers({posts, post, treePosts, currentPathList, playlist, searchVideos})
 
 export default note

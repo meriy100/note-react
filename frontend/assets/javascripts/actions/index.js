@@ -1,10 +1,6 @@
 import axios from "axios";
 import axiosHelper from '../lib/axiosHelper'
 
-export const clickActionQueryPosts = (posts) => {
-  return { type: 'QUERY_POSTS', payload: posts }
-}
-
 const axiosGetPost = (post) => {
   return { type: "GET_POST", payload: post}
 }
@@ -27,8 +23,8 @@ export const handleQueryTreePosts = (treePosts) => {
   return { type: 'QUERY_TREE_POSTS', payload: treePosts }
 }
 
-export const handleClickTreePost = (id, path) => {
-  return { type: 'CLICK_TREE_POST', payload: { id, path } }
+export const handleClickTreePost = (id, path_list) => {
+  return { type: 'CLICK_TREE_POST', payload: { id, path_list } }
 }
 
 export const handleEditBody = (body) => {
@@ -99,6 +95,6 @@ export const handleSubmitPost = (post) => {
   }
 }
 
-export const setNewPost = () => {
-  return { type: "SET_NEW_POST", payload: { } }
+export const setNewPost = (path) => {
+  return { type: "SET_NEW_POST", payload: { path } }
 }

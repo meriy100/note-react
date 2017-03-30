@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.pub.search(params).result
+    @posts = Post.pub.search(params).result.includes(:created_user).order(created_at: :desc)
     render json: @posts, each_serializer: PostSerializer
   end
 

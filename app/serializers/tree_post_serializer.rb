@@ -1,5 +1,5 @@
 class TreePostSerializer < ActiveModel::Serializer
-  attributes :id, :name, :path, :post, :dipth, :posts_count, :child_visible, :children
+  attributes :id, :name, :path, :path_list, :post, :dipth, :posts_count, :child_visible, :children
 
   def child_visible
     false

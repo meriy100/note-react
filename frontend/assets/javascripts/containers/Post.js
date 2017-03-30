@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
 import axios from "axios";
 
-import { handleGetPost, handleArchivePost } from '../actions'
+import { handleClickTreePost, handleGetPost, handleArchivePost } from '../actions'
+import { handleQueryPosts } from '../actions/posts'
 import PostComponent from '../components/PostComponent.jsx'
 
 
@@ -14,6 +15,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getPost: (id) => { handleGetPost(id)(dispatch) },
+    queryPosts: (params) => { handleQueryPosts(params)(dispatch) },
+    clickPathListItem: (id, path_list) => {
+      dispatch(handleClickTreePost(id, path_list))
+    },
     clickArchivePost: (id) => {
       handleArchivePost(id)(dispatch)
     },

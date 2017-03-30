@@ -22,8 +22,6 @@ import PlayRoom from "./containers/PlayRoom"
 
 import axiosHelper from './lib/axiosHelper'
 
-console.log(process.env.YOUTUBE_KEY)
-
 let store = createStore(note,
   applyMiddleware(createLogger())
 )

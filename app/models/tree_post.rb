@@ -23,6 +23,14 @@ class TreePost
     path.hash
   end
 
+  def path_list
+    least_path = ""
+    path.split('/').map do |name|
+      this_path = least_path.concat("/#{name}").gsub(/^\//, "")
+      { id: this_path.hash, path: this_path, name: name }
+    end
+  end
+
   def insert_post(paths, post)
     current_path = paths.shift
     if (next_tree = find_in_children(current_path).presence)

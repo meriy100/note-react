@@ -12,7 +12,7 @@ class TreePost extends Component {
   }
 
   render() {
-    let { id, post, name, children, dipth, visible, path, child_visible, clickTreePost, queryPosts } = this.props
+    let { id, post, name, children, dipth, visible, path, path_list, child_visible, clickTreePost, queryPosts } = this.props
     let styles = {paddingLeft: (dipth*10 + 15)}
     return (
       <div style={visible ? {display: "block"} : {display: "none"} }>
@@ -21,8 +21,8 @@ class TreePost extends Component {
           onClick={()=> {
             if(post){
               this.context.router.push(`/posts/${post.id}`)
-            }else{
-              clickTreePost(id, path)
+            } else {
+              clickTreePost(id, path_list)
               queryPosts({ path_start: path })
             }
           }}
