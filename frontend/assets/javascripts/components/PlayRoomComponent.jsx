@@ -54,7 +54,7 @@ class PlayRoomComponent extends Component {
     queryPlaylist()
 
     let CableApp = {}
-    CableApp.cable = ActionCable.createConsumer("ws://localhost:3000/cable")
+    CableApp.cable = ActionCable.createConsumer(process.env.WEBSOCET_ENDPOINT)
     CableApp.MusicChannel = CableApp.cable.subscriptions.create("MusicChannel", {
       connected:  function() {
       },
