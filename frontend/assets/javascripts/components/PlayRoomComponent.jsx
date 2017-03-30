@@ -50,7 +50,7 @@ class PlayRoomComponent extends Component {
 
   componentDidMount () {
     let { submitQuerySearchVideos, clickAddPlayList, queryPlaylist, removePlaylist } = this.props
-    submitQuerySearchVideos('jaz')
+    submitQuerySearchVideos('music')
     queryPlaylist()
 
     let CableApp = {}
@@ -130,7 +130,7 @@ class PlayRoomComponent extends Component {
           <div className='col-md-6'>
             <ul className="list-group">
               {playlist.map(video =>
-                <li key={video.video_id}
+                <li key={video.id}
                   className='list-group-item'>
                   <img src={video.url} />
                   <span>{video.title}</span>

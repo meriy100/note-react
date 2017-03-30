@@ -10,10 +10,7 @@ const playlist = (state=[], action) => {
     case 'QUERY_PLAYLIST':
       return action.payload
     case 'REMOVE_PLAYLIST':
-      return state.filter((playlist_item, _) => {
-        console.log(playlist_item.id)
-        playlist_item.id !== action.playload.id
-      })
+      return state.filter((playlist_item, _) => playlist_item.id !== action.payload.id)
     default:
       return state
   }
