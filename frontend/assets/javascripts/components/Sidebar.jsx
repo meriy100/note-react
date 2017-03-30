@@ -20,6 +20,12 @@ class Sidebar extends Component {
               </Link>
             </li>
             <li className="nav-li">
+              <Link to="/play_room" >
+                <i className="fa fa-music fa-3x" />
+                <p>PlayRoom</p>
+              </Link>
+            </li>
+            <li className="nav-li">
               <a href="/logout" >
                 <i className="fa fa-sign-out fa-3x" />
                 <p>Logout</p>
