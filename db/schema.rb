@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170328122619) do
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
     t.string   "aasm_state"
-    t.integer  "state",                         default: 0,     null: false
+    t.string   "state",                         default: "pub", null: false
     t.index ["state"], name: "index_posts_on_state", using: :btree
   end
 
