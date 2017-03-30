@@ -49,7 +49,7 @@ deploy:
   steps:
     - heroku-deploy:
       install-toolbelt: true
-      key-name: $heroku_PRIVATE
+      key-name: $heroku_PUBLIC
     - script:
       name: Update database
       code: heroku run rake db:migrate --app $HEROKU_APP_NAME
