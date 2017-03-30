@@ -1,3 +1,4 @@
+const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: {
     application: './frontend/assets/javascripts/application.js'
