@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+key = ENV['YOUTUBE_KEY']
+
+
+File.open('./.env.production', 'w') do |file|
+  file.write("YOUTUBE_KEY=#{key}\n")
+  file.write("WEBSOCKET_ENDPOINT=wss://note-sw.herokuapp.com/cable\n")
+end

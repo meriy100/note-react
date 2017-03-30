@@ -1,3 +1,4 @@
+const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: {
     application: './frontend/assets/javascripts/application.js'
@@ -6,6 +7,15 @@ module.exports = {
     path: './app/assets/javascripts',
     filename: '[name].bundle.js'
   },
+  node: {
+    fs: 'empty'
+  },
+  plugins: [
+    new Dotenv({
+      path: './.env.production',
+      safe: false
+    })
+  ],
   module: {
     loaders: [
       {

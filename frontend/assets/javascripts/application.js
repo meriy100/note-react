@@ -19,22 +19,15 @@ import Post from "./containers/Post"
 import PostEditorMaster from './components/PostEditorMaster.jsx'
 
 import PlayRoom from "./containers/PlayRoom"
-import playRoom from './lib/play_room'
 
 import axiosHelper from './lib/axiosHelper'
 
+console.log(process.env.YOUTUBE_KEY)
 
 let store = createStore(note,
   applyMiddleware(createLogger())
 )
 
-
-if(document.URL.match('/play_room')) {
-  // axiosHelper.get('/api/playlist').then((response) => {
-  //   console.log(response)
-  //   playRoom(response.data.video_id)
-  // })
-}
 render(
   <Provider store={store}>
     <Router history={browserHistory}>

@@ -1,4 +1,5 @@
 task :build_frontend do
+  sh 'bin/heroku_env'
   sh 'npm install'
   sh 'npm run release'
 end
