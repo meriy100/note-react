@@ -33,7 +33,7 @@ class PlayRoomComponent extends Component {
         if(event.data === YT.PlayerState.ENDED) {
           if(playlist.length > 1) {
             youtubePlayer.loadVideoById(playlist[1].video_id)
-            component.state.CableApp.MusicChannel.removePlaylistItem(playlist[0])
+            component.state.CableApp.MusicChannel.endPlaylistItem(playlist[0])
           }
         }
       }
@@ -81,6 +81,9 @@ class PlayRoomComponent extends Component {
       },
       removePlaylistItem: function(playlist_item) {
         this.perform('destroy_playlist_item', {playlist_item})
+      },
+      endPlaylistItem: function(playlist_item) {
+        this.perform('end_playlist_item', {playlist_item})
       }
     })
     this.setState({ CableApp: CableApp })
