@@ -1,6 +1,6 @@
 class Api::PlaylistItemsController < ApplicationController
   def index
-    @playlist_items = PlaylistItem.all
+    @playlist_items = PlaylistItem.onplaylist
     render json: @playlist_items
   end
 

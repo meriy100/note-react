@@ -11,7 +11,13 @@
 #  updated_at :datetime         not null
 #  duration   :datetime
 #  type       :string(255)
+#  state      :string(255)      default("onplaylist")
+#
+# Indexes
+#
+#  index_playlist_items_on_state  (state)
 #
 
 class PlaylistItem < ApplicationRecord
+  enum state: { onplaylist: 'onplaylist', virtual: 'virtual' }
 end
