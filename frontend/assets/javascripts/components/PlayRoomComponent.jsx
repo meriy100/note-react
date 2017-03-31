@@ -49,7 +49,7 @@ class PlayRoomComponent extends Component {
   }
 
   componentDidMount () {
-    let { submitQuerySearchVideos, clickAddPlayList, queryPlaylist, removePlaylist } = this.props
+    let { submitQuerySearchVideos, queryPlaylist, wsQueryPlaylist } = this.props
     submitQuerySearchVideos('music')
     queryPlaylist()
 
@@ -62,11 +62,8 @@ class PlayRoomComponent extends Component {
       },
       received: function(data) {
         switch (data.type) {
-          case 'ADD_PLAYLIST_ITEM':
-            clickAddPlayList(data.payload)
-            return
-          case 'DELETE_PLAYLIST_ITEM':
-            removePlaylist(data.payload)
+          case 'QUERY_PLAYLIST':
+            wsQueryPlaylist(data.payload)
             return
           default:
             return

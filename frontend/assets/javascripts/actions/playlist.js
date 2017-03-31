@@ -1,9 +1,5 @@
 import axiosHelper from '../lib/axiosHelper'
 
-export const handleAddPlaylist = (playlist_item) => {
-  return { type: 'ADD_PLAYLIST_ITEM', payload: playlist_item }
-}
-
 const queryPlaylist = (playlist) => {
   return { type: 'QUERY_PLAYLIST', payload: playlist }
 }
@@ -18,6 +14,6 @@ export const handleQueryPlaylist = () => {
   }
 }
 
-export const handleRemovePlaylist = (playlist_item) => {
-  return { type: 'REMOVE_PLAYLIST', payload: playlist_item }
+export const handleWsQueryPlaylist = (playlist) => {
+  return { type: 'QUERY_PLAYLIST', payload: playlist }
 }
