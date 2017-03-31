@@ -22,6 +22,7 @@ class PlayRoomComponent extends Component {
             'onStateChange': onPlayerStateChange
           }
         });
+      component.setState({youtubePlayer})
 
       function playerReady(event) {
           youtubePlayer.playVideo();
@@ -32,7 +33,7 @@ class PlayRoomComponent extends Component {
         if(event.data === YT.PlayerState.ENDED) {
           if(playlist.length > 1) {
             youtubePlayer.loadVideoById(playlist[1].video_id)
-            component.state.CableApp.MusicChannel.nextPlaylist(playlist[0])
+            component.state.CableApp.MusicChannel.removePlaylistItem(playlist[0])
           }
         }
       }
@@ -44,12 +45,13 @@ class PlayRoomComponent extends Component {
     this.state = {
       q: '',
       playing: false,
+      youtubePlayer: {},
       CableApp: {}
     };
   }
 
   componentDidMount () {
-    let { submitQuerySearchVideos, clickAddPlayList, queryPlaylist, removePlaylist } = this.props
+    let { submitQuerySearchVideos, queryPlaylist, wsQueryPlaylist } = this.props
     submitQuerySearchVideos('music')
     queryPlaylist()
 
@@ -62,11 +64,8 @@ class PlayRoomComponent extends Component {
       },
       received: function(data) {
         switch (data.type) {
-          case 'ADD_PLAYLIST_ITEM':
-            clickAddPlayList(data.payload)
-            return
-          case 'DELETE_PLAYLIST_ITEM':
-            removePlaylist(data.payload)
+          case 'QUERY_PLAYLIST':
+            wsQueryPlaylist(data.payload)
             return
           default:
             return
@@ -80,8 +79,8 @@ class PlayRoomComponent extends Component {
         }
         this.perform('add_playlist_item', {message})
       },
-      nextPlaylist: function(playlist_item) {
-        this.perform('next_playlist', {playlist_item})
+      removePlaylistItem: function(playlist_item) {
+        this.perform('destroy_playlist_item', {playlist_item})
       }
     })
     this.setState({ CableApp: CableApp })
@@ -132,11 +131,14 @@ class PlayRoomComponent extends Component {
 
           <div className='col-md-6'>
             <ul className="list-group">
-              {playlist.map(video =>
-                <li key={video.id}
+              {playlist.map(playlist_item =>
+                <li key={playlist_item.id}
                   className='list-group-item'>
-                  <img src={video.url} />
-                  <span>{video.title}</span>
+                  <img src={playlist_item.url} />
+                  <span>{playlist_item.title}</span>
+                  <button className='btn btn-danger btn-xs' onClick={()=>
+                    this.state.CableApp.MusicChannel.removePlaylistItem(playlist_item)
+                  }><i className='fa fa-trash-o'/></button>
                 </li>
               )}
             </ul>
