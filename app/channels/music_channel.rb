@@ -8,7 +8,11 @@ class MusicChannel < ApplicationCable::Channel
   end
 
   def add_playlist_item(data)
-    PlaylistItem.create!(playlist_item_params(data['message']))
+    if playlist_item = PlaylistItem.find_by(video_id: playlist_item_params(data['message'])[:video_id])
+      playlist_item.onplaylist!
+    else
+      PlaylistItem.create!(playlist_item_params(data['message']))
+    end
     ActionCable.server.broadcast('host_channel', type: 'QUERY_PLAYLIST', payload: PlaylistItem.onplaylist.order(updated_at: :asc).map(&:attributes))
   end
 
