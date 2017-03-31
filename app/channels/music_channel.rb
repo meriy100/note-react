@@ -12,7 +12,7 @@ class MusicChannel < ApplicationCable::Channel
     ActionCable.server.broadcast('host_channel', type: 'QUERY_PLAYLIST', payload: PlaylistItem.all.map(&:attributes))
   end
 
-  def next_playlist(data)
+  def destroy_playlist_item(data)
     if playlist_item = PlaylistItem.find_by(id: data['playlist_item']['id'])
       playlist_item.destroy!
     end
