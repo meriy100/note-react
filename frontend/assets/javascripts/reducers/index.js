@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import posts from './posts'
 import post from './post'
 import playlist from './playlist'
+import onPlayerPlaylistItem from './onPlayerPlaylistItem'
 import searchVideos from './searchVideos'
 import currentUser from './currentUser'
 
@@ -46,6 +47,6 @@ const currentPathList = (state = [], action) => {
   }
 }
 
-const note = combineReducers({posts, post, treePosts, currentPathList, playlist, searchVideos, currentUser})
+const note = combineReducers({posts, post, treePosts, currentPathList, playlist, onPlayerPlaylistItem, searchVideos, currentUser})
 
 export default note
