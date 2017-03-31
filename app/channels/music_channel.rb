@@ -8,16 +8,15 @@ class MusicChannel < ApplicationCable::Channel
   end
 
   def add_playlist_item(data)
-    playlist_item =PlaylistItem.new(playlist_item_params(data['message']))
-    playlist_item.save!
-    ActionCable.server.broadcast('host_channel', type: 'ADD_PLAYLIST_ITEM', payload: playlist_item.attributes)
+    PlaylistItem.create!(playlist_item_params(data['message']))
+    ActionCable.server.broadcast('host_channel', type: 'QUERY_PLAYLIST', payload: PlaylistItem.all.map(&:attributes))
   end
 
-  def next_playlist(data)
+  def destroy_playlist_item(data)
     if playlist_item = PlaylistItem.find_by(id: data['playlist_item']['id'])
       playlist_item.destroy!
     end
-    ActionCable.server.broadcast('host_channel', { type: 'DELETE_PLAYLIST_ITEM', payload: playlist_item.attributes })
+    ActionCable.server.broadcast('host_channel', { type: 'QUERY_PLAYLIST', payload: PlaylistItem.all.map(&:attributes) })
   end
 
   private
