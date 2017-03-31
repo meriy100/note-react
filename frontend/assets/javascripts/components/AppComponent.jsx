@@ -5,7 +5,13 @@ import { Link } from 'react-router'
 import Sidebar from './Sidebar.jsx'
 import RootComponent from "./RootComponent.js"
 
-class App extends Component {
+class AppComponent extends Component {
+  constructor(props) {
+    super(props)
+    let { setCurrentUser } = props
+    setCurrentUser()
+  }
+
   render() {
     return (
       <div className="container">
@@ -19,4 +25,4 @@ class App extends Component {
     )
   }
 }
-export default App
+export default AppComponent

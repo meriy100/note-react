@@ -88,9 +88,12 @@ class PlayRoomComponent extends Component {
   }
 
   componentDidUpdate() {
-    if(this.props.playlist.length !== 0 && !this.state.playing) {
-      this.playRoom(this, this.props.playlist[0].video_id)
-      this.setState({playing: true})
+    let { currentUser } = this.props
+    if(currentUser.host) {
+      if(this.props.playlist.length !== 0 && !this.state.playing) {
+        this.playRoom(this, this.props.playlist[0].video_id)
+        this.setState({playing: true})
+      }
     }
   }
 
