@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
   return {
     searchVideos: state.searchVideos,
     playlist: state.playlist,
+    currentUser: state.currentUser,
   }
 }
 

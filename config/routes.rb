@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
+    resource :current_user, controller: 'current_user', only: [:show]
     resources :posts, only: [:index, :show, :create, :update] do
       resource :state, only: [:update], controller: 'posts/state'
     end

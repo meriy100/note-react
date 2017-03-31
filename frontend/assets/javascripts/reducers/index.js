@@ -4,6 +4,7 @@ import posts from './posts'
 import post from './post'
 import playlist from './playlist'
 import searchVideos from './searchVideos'
+import currentUser from './currentUser'
 
 const treePost = (state = {}, action) => {
   switch(action.type) {
@@ -45,6 +46,6 @@ const currentPathList = (state = [], action) => {
   }
 }
 
-const note = combineReducers({posts, post, treePosts, currentPathList, playlist, searchVideos})
+const note = combineReducers({posts, post, treePosts, currentPathList, playlist, searchVideos, currentUser})
 
 export default note
