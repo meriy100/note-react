@@ -11,7 +11,7 @@ import note from './reducers'
 import Posts from './containers/Posts'
 
 
-import App from "./components/App.jsx"
+import App from "./containers/App"
 
 import RootComponent from "./components/RootComponent"
 import Sidebar from "./components/Sidebar.jsx"
