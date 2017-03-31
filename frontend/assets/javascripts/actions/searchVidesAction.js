@@ -10,6 +10,7 @@ const searchVideoParams = (q) => {
     q: q,
     key: process.env.YOUTUBE_KEY,
     type: 'video',
+    maxResults: 30,
   }
 }
 
