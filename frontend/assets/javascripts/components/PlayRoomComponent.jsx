@@ -107,10 +107,9 @@ class PlayRoomComponent extends Component {
   render() {
     let { searchVideos, playlist, submitQuerySearchVideos } = this.props
     return(
-      <div>
+      <div className='play_room'>
         <h1>PlayRoom</h1>
-        <div id="sample">
-        </div>
+        <div id="sample" />
         <div className='row'>
           <div className='col-md-6'>
             <div className='form-group'>
