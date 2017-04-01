@@ -8,46 +8,51 @@
     left: 40px; 
     right: 40px;  
   }
-}
 
-.list-group-item {
-  margin-bottom: 7px;
-}
-
-.form-group{
-  margin: {
-    top: 40px;
-    bottom: 40px;  
+  .list-group-item {
+    margin-bottom: 7px;
   }
-}
 
-.list-group{
-  width: 100%; 
-  margin-top: 40px;
-}
+  .search-result{
+    width: 100%; 
+    margin-top: 40px;
+    
+    .send-playlist{
+      @include playroom-side-btn;
+    }
+  }
+ 
+  .search-playlist{
+    margin: {
+      top: 40px;
+      bottom: 40px;  
+    }
 
-.host-form{
-  float:left;
-  width:90%;
-}
+    .search-form{
+      float:left;
+      width:90%;
+    }
+  
+    .search-btn{
+      float:right;
+    }
+  }
 
-.host-submit{
-  float:right;
-}
-
-.send-playlist{
-  @include playroom-side-btn;
-}
-
-.btn-xs{
-  @include playroom-side-btn;
-}
-
-.song-title{
-  position:absolute; 
-  width:60%; 
-  margin-left:20px;
-  word-wrap: break-word;
+  .playlist-list{
+    width: 100%; 
+    margin-top: 40px;
+    
+    .btn-xs{
+      @include playroom-side-btn;
+    }
+  }
+ 
+  .search-video-title{
+    position:absolute; 
+    width:60%; 
+    margin-left:20px;
+    word-wrap: break-word;
+  }
 }
 
 
