@@ -112,17 +112,17 @@ class PlayRoomComponent extends Component {
         <div id="sample" />
         <div className='row'>
           <div className='col-md-6'>
-            <div className='form-group'>
-              <input className='form-control' value={this.state.q} onChange={(event) => this.handleChangeQueryField(event) }/>
-              <button className='btn btn-primary' onClick={() => submitQuerySearchVideos(this.state.q)} >検索</button>
+            <div className='form-group search-playlist'>
+              <input className='form-control search-form' value={this.state.q} onChange={(event) => this.handleChangeQueryField(event) }/>
+              <button className='btn btn-primary search-btn' onClick={() => submitQuerySearchVideos(this.state.q)} >検索</button>
             </div>
             <br/>
-            <ul className="list-group">
+            <ul className="list-group search-result">
               {searchVideos.map(searchVideo =>
                 <li key={searchVideo.id.videoId}
                   className='list-group-item'>
                   <img src={searchVideo.snippet.thumbnails.default.url} />
-                  <span>{searchVideo.snippet.title}</span>
+                  <span className='search-video-title'>{searchVideo.snippet.title}</span>
                   <button className='btn btn-primary send-playlist' onClick={()=>
                     this.state.CableApp.MusicChannel.add_videos(searchVideo)
                   } >プレイリストに追加</button>
@@ -132,12 +132,12 @@ class PlayRoomComponent extends Component {
           </div>
 
           <div className='col-md-6'>
-            <ul className="list-group">
+            <ul className="list-group playlist-list">
               {playlist.map(playlist_item =>
                 <li key={playlist_item.id}
                   className='list-group-item'>
                   <img src={playlist_item.url} />
-                  <span>{playlist_item.title}</span>
+                  <span className='search-video-title'>{playlist_item.title}</span>
                   <button className='btn btn-danger btn-xs' onClick={()=>
                     this.state.CableApp.MusicChannel.removePlaylistItem(playlist_item)
                   }><i className='fa fa-trash-o'/></button>
